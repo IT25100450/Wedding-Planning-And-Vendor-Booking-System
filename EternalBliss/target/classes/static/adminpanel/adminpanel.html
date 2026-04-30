@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Admin Panel — Eternal Bliss</title>
+    <link rel="stylesheet" href="adminpanel.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+    <div class="sidebar-brand">
+        <a href="../index.html" class="logo">
+        <span class="sb-small">Eternal</span>
+        <span class="sb-large">Bliss</span>
+        </a>
+        <span class="sb-badge">Admin</span>
+    </div>
+
+    <nav class="sidebar-nav">
+        <span class="nav-section-label">Management</span>
+        <a href="../usermanagment/usermanagement.html"    class="nav-item active">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="1.4"/><path d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            Users
+        </a>
+        <a href="vendors.txt"  class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="11" rx="1" stroke="currentColor" stroke-width="1.4"/><path d="M8 10V8a4 4 0 018 0v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M10 16h4M12 14v4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            Vendors
+        </a>
+        <a href="bookings.txt" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="16" rx="1" stroke="currentColor" stroke-width="1.4"/><path d="M8 3v4M16 3v4M4 11h16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M9 16l2 2 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Bookings
+        </a>
+        <a href="guests.txt"   class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.4"/><circle cx="16" cy="7" r="4" stroke="currentColor" stroke-width="1.4"/><path d="M2 20c0-3.866 3.134-7 7-7M15 13c3.866 0 7 3.134 7 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            Guests
+        </a>
+        <a href="events.txt"   class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 5 5.6.8-4 3.9.9 5.3L12 14.5 7.1 17l.9-5.3L4 7.8l5.6-.8z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M5 19h14M7 22h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            Events
+        </a>
+        <a href="reviews.txt"  class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H14l-2 3-2-3H4V5z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M8 10h8M8 13h5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            Reviews
+        </a>
+
+        <span class="nav-section-label" style="margin-top:20px;">System</span>
+        <a href="#" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            Settings
+        </a>
+        <a href="../adminpanel/adminpanel.html" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9 22V12h6v10" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+            Homepage
+        </a>
+    </nav>
+
+    <div class="sidebar-footer">
+        <div class="admin-avatar">A</div>
+        <div class="admin-info">
+            <span class="admin-name">Admin User</span>
+            <span class="admin-role">Super Administrator</span>
+        </div>
+    </div>
+</aside>
+
+<!-- Main Content -->
+<div class="main">
+
+    <!-- Topbar -->
+    <header class="topbar">
+        <div class="topbar-left">
+            <h2 class="page-title">Dashboard Overview</h2>
+            <p class="page-date" id="currentDate"></p>
+        </div>
+        <div class="topbar-right">
+            <div class="search-box">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.4"/><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                <input type="text" placeholder="Search records…"/>
+            </div>
+            <button class="notif-btn">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="notif-dot"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Stats Row -->
+    <section class="stats-row">
+        <div class="stat-card" style="--accent: #c4756a;">
+            <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="1.4"/><path d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </div>
+            <div class="stat-info">
+                <span class="stat-value">248</span>
+                <span class="stat-label">Total Users</span>
+            </div>
+            <span class="stat-trend up">↑ 12%</span>
+        </div>
+
+        <div class="stat-card" style="--accent: #c9a96e;">
+            <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="11" rx="1" stroke="currentColor" stroke-width="1.4"/><path d="M8 10V8a4 4 0 018 0v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </div>
+            <div class="stat-info">
+                <span class="stat-value">84</span>
+                <span class="stat-label">Vendors Listed</span>
+            </div>
+            <span class="stat-trend up">↑ 5%</span>
+        </div>
+
+        <div class="stat-card" style="--accent: #8b3a3a;">
+            <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="16" rx="1" stroke="currentColor" stroke-width="1.4"/><path d="M8 3v4M16 3v4M4 11h16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </div>
+            <div class="stat-info">
+                <span class="stat-value">136</span>
+                <span class="stat-label">Active Bookings</span>
+            </div>
+            <span class="stat-trend down">↓ 3%</span>
+        </div>
+
+        <div class="stat-card" style="--accent: #7a9e87;">
+            <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.4"/><circle cx="16" cy="7" r="4" stroke="currentColor" stroke-width="1.4"/><path d="M2 20c0-3.866 3.134-7 7-7M15 13c3.866 0 7 3.134 7 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </div>
+            <div class="stat-info">
+                <span class="stat-value">1,042</span>
+                <span class="stat-label">Total Guests</span>
+            </div>
+            <span class="stat-trend up">↑ 8%</span>
+        </div>
+    </section>
+
+    <!-- Middle Row -->
+    <section class="mid-row">
+
+        <!-- Quick Access -->
+        <div class="panel quick-access">
+            <div class="panel-header">
+                <h3 class="panel-title">Quick Access</h3>
+                <span class="panel-sub">Manage records</span>
+            </div>
+            <div class="qa-grid">
+                <a href="users.txt"    class="qa-btn">
+                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="1.4"/><path d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    <span>Users</span>
+                </a>
+                <a href="vendors.txt"  class="qa-btn">
+                    <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="11" rx="1" stroke="currentColor" stroke-width="1.4"/><path d="M8 10V8a4 4 0 018 0v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    <span>Vendors</span>
+                </a>
+                <a href="bookings.txt" class="qa-btn">
+                    <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="16" rx="1" stroke="currentColor" stroke-width="1.4"/><path d="M8 3v4M16 3v4M4 11h16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    <span>Bookings</span>
+                </a>
+                <a href="guests.txt"   class="qa-btn">
+                    <svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.4"/><circle cx="16" cy="7" r="4" stroke="currentColor" stroke-width="1.4"/><path d="M2 20c0-3.866 3.134-7 7-7M15 13c3.866 0 7 3.134 7 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    <span>Guests</span>
+                </a>
+                <a href="events.txt"   class="qa-btn">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 5 5.6.8-4 3.9.9 5.3L12 14.5 7.1 17l.9-5.3L4 7.8l5.6-.8z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+                    <span>Events</span>
+                </a>
+                <a href="reviews.txt"  class="qa-btn">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H14l-2 3-2-3H4V5z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+                    <span>Reviews</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="panel activity-panel">
+            <div class="panel-header">
+                <h3 class="panel-title">Recent Activity</h3>
+                <a href="#" class="panel-link">View all →</a>
+            </div>
+            <ul class="activity-list">
+                <li class="activity-item">
+                    <div class="act-dot" style="background:#c4756a;"></div>
+                    <div class="act-body">
+                        <span class="act-text"><strong>New booking</strong> by Amara &amp; James</span>
+                        <span class="act-time">2 min ago</span>
+                    </div>
+                </li>
+                <li class="activity-item">
+                    <div class="act-dot" style="background:#c9a96e;"></div>
+                    <div class="act-body">
+                        <span class="act-text"><strong>Vendor added</strong> — Bloom & Co. Florals</span>
+                        <span class="act-time">18 min ago</span>
+                    </div>
+                </li>
+                <li class="activity-item">
+                    <div class="act-dot" style="background:#7a9e87;"></div>
+                    <div class="act-body">
+                        <span class="act-text"><strong>Guest RSVP confirmed</strong> — Table 4 (×6)</span>
+                        <span class="act-time">45 min ago</span>
+                    </div>
+                </li>
+                <li class="activity-item">
+                    <div class="act-dot" style="background:#8b3a3a;"></div>
+                    <div class="act-body">
+                        <span class="act-text"><strong>Review submitted</strong> for Azure Catering — ★★★★★</span>
+                        <span class="act-time">1 hr ago</span>
+                    </div>
+                </li>
+                <li class="activity-item">
+                    <div class="act-dot" style="background:#c4756a;"></div>
+                    <div class="act-body">
+                        <span class="act-text"><strong>Event created</strong> — Lakeside Ceremony · May 10</span>
+                        <span class="act-time">2 hr ago</span>
+                    </div>
+                </li>
+                <li class="activity-item">
+                    <div class="act-dot" style="background:#c9a96e;"></div>
+                    <div class="act-body">
+                        <span class="act-text"><strong>User registered</strong> — Sofia Martens</span>
+                        <span class="act-time">3 hr ago</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </section>
+
+    <!-- Upcoming Events Table -->
+    <section class="panel table-panel">
+        <div class="panel-header">
+            <h3 class="panel-title">Upcoming Events</h3>
+            <a href="events.txt" class="panel-link">Open file →</a>
+        </div>
+        <div class="table-wrap">
+            <table class="data-table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Couple</th>
+                    <th>Venue</th>
+                    <th>Date</th>
+                    <th>Guests</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="row-num">01</td>
+                    <td><strong>Amara &amp; James</strong></td>
+                    <td>Lakeside Garden</td>
+                    <td>10 May 2025</td>
+                    <td>120</td>
+                    <td><span class="badge confirmed">Confirmed</span></td>
+                </tr>
+                <tr>
+                    <td class="row-num">02</td>
+                    <td><strong>Sofia &amp; Luca</strong></td>
+                    <td>Grand Ballroom</td>
+                    <td>24 May 2025</td>
+                    <td>200</td>
+                    <td><span class="badge pending">Pending</span></td>
+                </tr>
+                <tr>
+                    <td class="row-num">03</td>
+                    <td><strong>Priya &amp; Rajan</strong></td>
+                    <td>Rosewood Estate</td>
+                    <td>7 Jun 2025</td>
+                    <td>85</td>
+                    <td><span class="badge confirmed">Confirmed</span></td>
+                </tr>
+                <tr>
+                    <td class="row-num">04</td>
+                    <td><strong>Ella &amp; Thomas</strong></td>
+                    <td>Cliffside Chapel</td>
+                    <td>21 Jun 2025</td>
+                    <td>60</td>
+                    <td><span class="badge draft">Draft</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</div><!-- /main -->
+
+<script>
+    // Set current date
+    const d = new Date();
+    document.getElementById('currentDate').textContent =
+        d.toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+
+    // Active nav highlight
+    document.querySelectorAll('.nav-item').forEach(item => {
+        item.addEventListener('click', function() {
+            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+</script>
+
+</body>
+</html>
