@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Booking Management — Eternal Bliss</title>
+    <link rel="stylesheet" href="bookingmanagement.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+    <div class="sidebar-brand">
+        <a href="../../../index.html" class="logo">
+            <span class="sb-small">Eternal</span>
+            <span class="sb-large">Bliss</span>
+        </a>
+        <span class="sb-badge">Admin</span>
+    </div>
+
+    <nav class="sidebar-nav">
+        <span class="nav-section-label">Management</span>
+        <a href="../usermanagement/usermanagement.html" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="1.4"/><path d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            Users
+        </a>
+        <a href="../vendormanagement/vendormanagement.html" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="11" rx="1" stroke="currentColor" stroke-width="1.4"/><path d="M8 10V8a4 4 0 018 0v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M10 16h4M12 14v4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            Vendors
+        </a>
+        <a href="../servicemanagement/servicemanagement.html" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><rect x="9" y="3" width="6" height="4" rx="1" stroke="currentColor" stroke-width="1.4"/><path d="M9 12h6M9 16h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            Services
+        </a>
+        <a href="#" class="nav-item active">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="16" rx="1" stroke="currentColor" stroke-width="1.4"/><path d="M8 3v4M16 3v4M4 11h16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M9 16l2 2 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Bookings
+        </a>
+        <a href="../weddingplanner/weddingplanner.html" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 5 5.6.8-4 3.9.9 5.3L12 14.5 7.1 17l.9-5.3L4 7.8l5.6-.8z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+            Wedding Planner
+        </a>
+        <a href="../ratingsmanagement/ratingsmanagement.html" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H14l-2 3-2-3H4V5z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M8 10h8M8 13h5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            Reviews
+        </a>
+
+        <span class="nav-section-label" style="margin-top:20px;">System</span>
+        <a href="#" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            Settings
+        </a>
+        <a href="../adminpanel.html" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9 22V12h6v10" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+            Homepage
+        </a>
+    </nav>
+
+    <div class="sidebar-footer">
+        <div class="admin-avatar">A</div>
+        <div class="admin-info">
+            <span class="admin-name">Admin User</span>
+            <span class="admin-role">Super Administrator</span>
+        </div>
+    </div>
+</aside>
+
+<!-- Main Content -->
+<div class="main">
+
+    <!-- Topbar -->
+    <header class="topbar">
+        <div class="topbar-left">
+            <h2 class="page-title">Booking Management</h2>
+            <p class="page-date" id="currentDate"></p>
+        </div>
+        <div class="topbar-right">
+            <div class="search-box">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.4"/><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                <input type="text" placeholder="Search bookings…" id="searchInput" oninput="filterBookings()"/>
+            </div>
+            <button class="notif-btn">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="notif-dot"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Stats Row -->
+    <section class="stats-row">
+        <div class="stat-card" style="--accent: #c4756a;">
+            <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="16" rx="1" stroke="currentColor" stroke-width="1.4"/><path d="M8 3v4M16 3v4M4 11h16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </div>
+            <div class="stat-info">
+                <span class="stat-value" id="stat-total">0</span>
+                <span class="stat-label">Total Bookings</span>
+            </div>
+            <span class="stat-trend up">↑ 9%</span>
+        </div>
+        <div class="stat-card" style="--accent: #c9a96e;">
+            <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </div>
+            <div class="stat-info">
+                <span class="stat-value" id="stat-pending">0</span>
+                <span class="stat-label">Pending</span>
+            </div>
+            <span class="stat-trend down">↓ 2%</span>
+        </div>
+        <div class="stat-card" style="--accent: #7a9e87;">
+            <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="stat-info">
+                <span class="stat-value" id="stat-approved">0</span>
+                <span class="stat-label">Approved</span>
+            </div>
+            <span class="stat-trend up">↑ 14%</span>
+        </div>
+        <div class="stat-card" style="--accent: #8b3a3a;">
+            <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M15 9l-6 6M9 9l6 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </div>
+            <div class="stat-info">
+                <span class="stat-value" id="stat-rejected">0</span>
+                <span class="stat-label">Rejected</span>
+            </div>
+            <span class="stat-trend down">↓ 1%</span>
+        </div>
+    </section>
+
+    <!-- Toolbar Row -->
+    <div class="toolbar-row">
+        <div class="filter-tabs">
+            <button class="filter-tab active" onclick="setFilter('all', this)">All Bookings</button>
+            <button class="filter-tab" onclick="setFilter('pending', this)">Pending</button>
+            <button class="filter-tab" onclick="setFilter('approved', this)">Approved</button>
+            <button class="filter-tab" onclick="setFilter('rejected', this)">Rejected</button>
+            <div class="cat-select-wrap">
+                <select class="cat-select" id="vendorFilter" onchange="filterBookings()">
+                    <option value="">All Vendors</option>
+                    <option value="Azure Catering">Azure Catering</option>
+                    <option value="Bloom & Co. Florals">Bloom &amp; Co. Florals</option>
+                    <option value="Luminary Studios">Luminary Studios</option>
+                    <option value="Royal Decor">Royal Decor</option>
+                    <option value="Harmony Music">Harmony Music</option>
+                </select>
+            </div>
+        </div>
+        <button class="btn-add" onclick="openModal()">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            New Booking
+        </button>
+    </div>
+
+    <!-- Table Panel -->
+    <section class="panel table-panel">
+        <div class="panel-header">
+            <div>
+                <h3 class="panel-title">Booking Records</h3>
+                <span class="panel-sub" id="recordCount">0 records</span>
+            </div>
+        </div>
+        <div class="table-wrap">
+            <table class="data-table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Customer</th>
+                    <th>Vendor</th>
+                    <th>Service</th>
+                    <th>Event Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</div><!-- /main -->
+
+<!-- Add / Edit Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+    <div class="modal">
+        <div class="modal-header">
+            <div>
+                <h3 class="modal-title" id="modalTitle">New Booking</h3>
+                <p class="modal-sub">Fill in the booking details below</p>
+            </div>
+            <button class="modal-close" onclick="closeModal()">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </button>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" id="editId"/>
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Customer Name *</label>
+                    <input class="form-input" id="fCustomer" placeholder="e.g. Amara & James" />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Vendor *</label>
+                    <select class="form-input" id="fVendor">
+                        <option value="">Select vendor…</option>
+                        <option>Azure Catering</option>
+                        <option>Bloom &amp; Co. Florals</option>
+                        <option>Luminary Studios</option>
+                        <option>Royal Decor</option>
+                        <option>Harmony Music</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Service *</label>
+                    <select class="form-input" id="fService">
+                        <option value="">Select service…</option>
+                        <option>Wedding Catering Package</option>
+                        <option>Floral Arrangement — Full Venue</option>
+                        <option>Photography — Full Day</option>
+                        <option>Videography Package</option>
+                        <option>Reception Decoration</option>
+                        <option>Live Band Performance</option>
+                        <option>DJ Set — Evening</option>
+                        <option>Bridal Makeup</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Event Date *</label>
+                    <input class="form-input" id="fEventDate" type="date" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Booking Status</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="status" value="pending" checked/>
+                        <span class="radio-custom"></span>
+                        Pending
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="status" value="approved"/>
+                        <span class="radio-custom"></span>
+                        Approved
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="status" value="rejected"/>
+                        <span class="radio-custom"></span>
+                        Rejected
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Notes</label>
+                <textarea class="form-input form-textarea" id="fNotes" placeholder="Any special requirements or notes…"></textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+            <button class="btn-save" onclick="saveBooking()">Save Booking</button>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirm Modal -->
+<div class="modal-overlay" id="deleteOverlay" onclick="closeDelete(event)">
+    <div class="modal modal-sm">
+        <div class="modal-header">
+            <div>
+                <h3 class="modal-title">Cancel Booking</h3>
+                <p class="modal-sub">This action cannot be undone</p>
+            </div>
+            <button class="modal-close" onclick="closeDelete()">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="delete-warn">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 9v4M12 17h.01" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                <p>You are about to permanently delete the booking for <strong id="deleteBookingName"></strong>. This will remove all associated records.</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-cancel" onclick="closeDelete()">Keep Booking</button>
+            <button class="btn-delete" onclick="confirmDelete()">Delete Booking</button>
+        </div>
+    </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+    // ── Data ──────────────────────────────────────────────────────
+    const seedBookings = [
+        { id: 1, customer: 'Amara & James',   vendor: 'Azure Catering',      service: 'Wedding Catering Package',      eventDate: '2025-05-10', status: 'approved',  notes: 'Vegetarian menu required for 30 guests.' },
+        { id: 2, customer: 'Sofia & Luca',    vendor: 'Bloom & Co. Florals', service: 'Floral Arrangement — Full Venue', eventDate: '2025-05-24', status: 'pending',   notes: 'White roses and lavender preferred.' },
+        { id: 3, customer: 'Priya & Rajan',   vendor: 'Luminary Studios',    service: 'Photography — Full Day',         eventDate: '2025-06-07', status: 'approved',  notes: '' },
+        { id: 4, customer: 'Ella & Thomas',   vendor: 'Royal Decor',         service: 'Reception Decoration',           eventDate: '2025-06-21', status: 'pending',   notes: 'Rustic garden theme.' },
+        { id: 5, customer: 'Mei & Daniel',    vendor: 'Harmony Music',       service: 'Live Band Performance',          eventDate: '2025-07-05', status: 'approved',  notes: 'Jazz & acoustic set preferred.' },
+        { id: 6, customer: 'Grace & Oliver',  vendor: 'Luminary Studios',    service: 'Videography Package',            eventDate: '2025-07-12', status: 'rejected',  notes: 'Rescheduling requested.' },
+        { id: 7, customer: 'Nadia & Carlos',  vendor: 'Azure Catering',      service: 'Wedding Catering Package',      eventDate: '2025-08-02', status: 'pending',   notes: 'Halal menu required.' },
+        { id: 8, customer: 'Isabel & Henri',  vendor: 'Bloom & Co. Florals', service: 'Floral Arrangement — Full Venue', eventDate: '2025-08-16', status: 'approved',  notes: 'Pastel palette.' },
+    ];
+
+    let bookings = [];
+    let nextId = 9;
+
+    function loadBookings() {
+        const stored = JSON.parse(localStorage.getItem('eb_bookings') || 'null');
+        if (stored && stored.length > 0) {
+            bookings = stored;
+            nextId = Math.max(...bookings.map(b => b.id || 0), 0) + 1;
+        } else {
+            bookings = [...seedBookings];
+            localStorage.setItem('eb_bookings', JSON.stringify(bookings));
+        }
+    }
+
+    function saveToStorage() {
+        localStorage.setItem('eb_bookings', JSON.stringify(bookings));
+    }
+
+    let currentFilter = 'all';
+    let deleteTargetId = null;
+
+    // ── Render ────────────────────────────────────────────────────
+    function renderTable(data) {
+        const body = document.getElementById('tableBody');
+        if (!data.length) {
+            body.innerHTML = `<tr><td colspan="7" class="empty-row">No bookings found.</td></tr>`;
+            document.getElementById('recordCount').textContent = '0 records';
+            updateStats();
+            return;
+        }
+        body.innerHTML = data.map((b, i) => `
+            <tr>
+                <td class="row-num">0${i + 1 < 10 ? '' : ''}${i + 1}</td>
+                <td><strong>${b.customer}</strong></td>
+                <td>${b.vendor}</td>
+                <td class="service-cell">${b.service}</td>
+                <td>${formatDate(b.eventDate)}</td>
+                <td><span class="badge ${b.status}">${capitalize(b.status)}</span></td>
+                <td>
+                    <div class="action-btns">
+                        <button class="act-btn edit-btn" onclick="openEdit(${b.id})" title="Edit">
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <button class="act-btn del-btn" onclick="openDelete(${b.id})" title="Delete">
+                            <svg viewBox="0 0 24 24" fill="none"><polyline points="3 6 5 6 21 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 11v6M14 11v6M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        `).join('');
+        document.getElementById('recordCount').textContent = `${data.length} record${data.length !== 1 ? 's' : ''}`;
+        updateStats();
+    }
+
+    function getFiltered() {
+        const search = document.getElementById('searchInput').value.toLowerCase();
+        const vendor = document.getElementById('vendorFilter').value;
+        return bookings.filter(b => {
+            const matchSearch = b.customer.toLowerCase().includes(search) ||
+                b.vendor.toLowerCase().includes(search) ||
+                b.service.toLowerCase().includes(search);
+            const matchFilter = currentFilter === 'all' || b.status === currentFilter;
+            const matchVendor = !vendor || b.vendor === vendor;
+            return matchSearch && matchFilter && matchVendor;
+        });
+    }
+
+    function filterBookings() { renderTable(getFiltered()); }
+
+    function setFilter(f, btn) {
+        currentFilter = f;
+        document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filterBookings();
+    }
+
+    function updateStats() {
+        document.getElementById('stat-total').textContent    = bookings.length;
+        document.getElementById('stat-pending').textContent  = bookings.filter(b => b.status === 'pending').length;
+        document.getElementById('stat-approved').textContent = bookings.filter(b => b.status === 'approved').length;
+        document.getElementById('stat-rejected').textContent = bookings.filter(b => b.status === 'rejected').length;
+    }
+
+    // ── Helpers ───────────────────────────────────────────────────
+    function formatDate(d) {
+        if (!d) return '—';
+        const dt = new Date(d + 'T00:00:00');
+        return dt.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+    }
+    function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+    // ── Modal ─────────────────────────────────────────────────────
+    function openModal(reset = true) {
+        if (reset) {
+            document.getElementById('modalTitle').textContent = 'New Booking';
+            document.getElementById('editId').value = '';
+            document.getElementById('fCustomer').value = '';
+            document.getElementById('fVendor').value = '';
+            document.getElementById('fService').value = '';
+            document.getElementById('fEventDate').value = '';
+            document.getElementById('fNotes').value = '';
+            document.querySelector('input[name="status"][value="pending"]').checked = true;
+        }
+        document.getElementById('modalOverlay').classList.add('active');
+    }
+
+    function closeModal(e) {
+        if (!e || e.target === document.getElementById('modalOverlay'))
+            document.getElementById('modalOverlay').classList.remove('active');
+    }
+
+    function openEdit(id) {
+        const b = bookings.find(x => x.id === id);
+        if (!b) return;
+        document.getElementById('modalTitle').textContent = 'Edit Booking';
+        document.getElementById('editId').value = id;
+        document.getElementById('fCustomer').value = b.customer;
+        document.getElementById('fVendor').value = b.vendor;
+        document.getElementById('fService').value = b.service;
+        document.getElementById('fEventDate').value = b.eventDate;
+        document.getElementById('fNotes').value = b.notes;
+        document.querySelector(`input[name="status"][value="${b.status}"]`).checked = true;
+        openModal(false);
+    }
+
+    function saveBooking() {
+        const customer  = document.getElementById('fCustomer').value.trim();
+        const vendor    = document.getElementById('fVendor').value;
+        const service   = document.getElementById('fService').value;
+        const eventDate = document.getElementById('fEventDate').value;
+        const notes     = document.getElementById('fNotes').value.trim();
+        const status    = document.querySelector('input[name="status"]:checked').value;
+
+        if (!customer || !vendor || !service || !eventDate) {
+            showToast('Please fill in all required fields.', 'error'); return;
+        }
+
+        const editId = document.getElementById('editId').value;
+        if (editId) {
+            const idx = bookings.findIndex(b => b.id == editId);
+            bookings[idx] = { ...bookings[idx], customer, vendor, service, eventDate, status, notes };
+            showToast('Booking updated successfully.');
+        } else {
+            bookings.push({ id: nextId++, customer, vendor, service, eventDate, status, notes, ref: 'EB-' + Date.now().toString(36).toUpperCase(), createdAt: new Date().toISOString() });
+            showToast('Booking created successfully.');
+        }
+        saveToStorage();
+        closeModal();
+        filterBookings();
+    }
+
+    // ── Delete ────────────────────────────────────────────────────
+    function openDelete(id) {
+        deleteTargetId = id;
+        const b = bookings.find(x => x.id === id);
+        document.getElementById('deleteBookingName').textContent = b ? b.customer : '';
+        document.getElementById('deleteOverlay').classList.add('active');
+    }
+
+    function closeDelete(e) {
+        if (!e || e.target === document.getElementById('deleteOverlay'))
+            document.getElementById('deleteOverlay').classList.remove('active');
+    }
+
+    function confirmDelete() {
+        bookings = bookings.filter(b => b.id !== deleteTargetId);
+        saveToStorage();
+        closeDelete();
+        filterBookings();
+        showToast('Booking deleted.', 'error');
+    }
+
+    // ── Toast ─────────────────────────────────────────────────────
+    function showToast(msg, type = 'success') {
+        const t = document.getElementById('toast');
+        t.textContent = msg;
+        t.className = `toast show ${type}`;
+        setTimeout(() => t.classList.remove('show'), 3200);
+    }
+
+    // Active nav highlight
+    document.querySelectorAll('.nav-item').forEach(item => {
+        item.addEventListener('click', function () {
+            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
+    // Date
+    const d = new Date();
+    document.getElementById('currentDate').textContent =
+        d.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+    // Init
+    loadBookings();
+    renderTable(bookings);
+</script>
+
+</body>
+</html>
