@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>My Account — Eternal Bliss</title>
+    <link rel="stylesheet" href="useraccount.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- ── Navbar ─────────────────────────────────────────────── -->
+<nav class="ua-nav">
+    <a href="../../../index.html" class="ua-nav-brand">
+        <span class="brand-sm">Eternal</span>
+        <span class="brand-lg">Bliss</span>
+    </a>
+    <div class="ua-nav-right">
+        <a href="../../../index.html" class="ua-nav-link">Home</a>
+        <a href="../../../Admin/adminpanel/adminpanel.html" class="ua-nav-link" id="adminPanelBtn" style="display:none; color: #c4756a; font-weight: 600;">Admin Panel</a>
+        <button class="ua-logout-btn" onclick="logout()">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><polyline points="16 17 21 12 16 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><line x1="21" y1="12" x2="9" y2="12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            Sign Out
+        </button>
+    </div>
+</nav>
+
+<!-- ── Background blobs ──────────────────────────────────── -->
+<div class="ua-bg">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+</div>
+
+<!-- ── Main content ──────────────────────────────────────── -->
+<main class="ua-main">
+
+    <!-- Hero welcome strip -->
+    <section class="ua-hero">
+        <div class="ua-hero-inner">
+            <div class="ua-avatar-ring">
+                <div class="ua-avatar" id="userAvatar">?</div>
+            </div>
+            <div class="ua-hero-text">
+                <p class="ua-greeting">Welcome back,</p>
+                <h1 class="ua-name" id="userName">Loading…</h1>
+                <div class="ua-tags">
+                    <span class="ua-tag role-tag" id="userRole">—</span>
+                    <span class="ua-tag status-tag" id="userStatus">—</span>
+                </div>
+            </div>
+            <div class="ua-ornament">❧</div>
+        </div>
+    </section>
+
+    <!-- Account info cards -->
+    <section class="ua-cards">
+
+        <!-- Profile card -->
+        <div class="ua-card profile-card">
+            <div class="card-header">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="1.4"/><path d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                <h2>Account Details</h2>
+            </div>
+            <div class="card-body">
+                <div class="info-row">
+                    <span class="info-label">Full Name</span>
+                    <span class="info-value" id="detailName">—</span>
+                </div>
+                <div class="info-divider"></div>
+                <div class="info-row">
+                    <span class="info-label">Email Address</span>
+                    <span class="info-value" id="detailEmail">—</span>
+                </div>
+                <div class="info-divider"></div>
+                <div class="info-row">
+                    <span class="info-label">Account Role</span>
+                    <span class="info-value" id="detailRole">—</span>
+                </div>
+                <div class="info-divider"></div>
+                <div class="info-row">
+                    <span class="info-label">Account Status</span>
+                    <span class="info-value" id="detailStatus">—</span>
+                </div>
+                <div class="info-divider"></div>
+                <div class="info-row">
+                    <span class="info-label">User ID</span>
+                    <span class="info-value mono" id="detailId">—</span>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Change password card -->
+        <div class="ua-card pass-card">
+            <div class="card-header">
+                <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M7 11V7a5 5 0 0110 0v4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                <h2>Change Password</h2>
+            </div>
+            <div class="card-body">
+                <div class="field-group">
+                    <label class="field-label">New Password</label>
+                    <input type="password" id="newPass" class="field-input" placeholder="Enter new password"/>
+                </div>
+                <div class="field-group" style="margin-top:14px;">
+                    <label class="field-label">Confirm Password</label>
+                    <input type="password" id="confirmPass" class="field-input" placeholder="Repeat new password"/>
+                </div>
+                <div class="pass-msg" id="passMsg" style="display:none;"></div>
+                <button class="save-btn" onclick="changePassword()">
+                    Update Password
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- My Bookings card -->
+        <div class="ua-card bookings-card" id="myBookingsSection" style="grid-column: 1 / -1;">
+            <div class="card-header">
+                <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="16" rx="1" stroke="currentColor" stroke-width="1.4"/><path d="M8 3v4M16 3v4M4 11h16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M9 16l2 2 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <h2>My Bookings</h2>
+            </div>
+            <div class="card-body">
+                <div id="userBookingsList" class="bookings-list">
+                    <p>Loading bookings...</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
+<!-- ── Footer ─────────────────────────────────────────────── -->
+<footer class="ua-footer">
+    <span>© 2025 Eternal Bliss Wedding Planning</span>
+    <span class="foot-sep">✦</span>
+    <a href="../../../index.html">Back to Home</a>
+</footer>
+
+<script>
+    /* ── Auth guard ──────────────────────────────────────── */
+    const raw = sessionStorage.getItem('eb_user');
+    if (!raw) {
+        window.location.href = '../login.html';
+    }
+    const user = JSON.parse(raw || '{}');
+
+    const adminRoles = ['admin','super admin','venue manager','vendor manager','guest coordinator'];
+    if (adminRoles.includes((user.role || '').toLowerCase())) {
+        document.getElementById('adminPanelBtn').style.display = 'inline-block';
+    }
+
+    /* ── Populate UI ─────────────────────────────────────── */
+    const initials = (user.name || '?').split(' ').map(w => w[0]).join('').toUpperCase().slice(0,2);
+    document.getElementById('userAvatar').textContent  = initials;
+    document.getElementById('userName').textContent    = user.name  || 'Unknown User';
+    document.getElementById('userRole').textContent    = user.role  || 'Guest';
+    document.getElementById('userStatus').textContent  = user.status || 'Active';
+
+    document.getElementById('detailName').textContent   = user.name    || '—';
+    document.getElementById('detailEmail').textContent  = user.email   || '—';
+    document.getElementById('detailRole').textContent   = user.role    || '—';
+    document.getElementById('detailStatus').textContent = user.status  || '—';
+    document.getElementById('detailId').textContent     = '#' + (user.user_id || '—');
+
+    /* ── Fetch latest user data from DB ─────────────────── */
+    if (user.user_id) {
+        fetch(`http://localhost:8080/api/users`)
+            .then(r => r.json())
+            .then(users => {
+                const me = users.find(u => u.user_id === user.user_id);
+                if (!me) return;
+                // refresh session
+                const updated = { ...user, name: me.name, email: me.email, role: me.role, status: me.status };
+                sessionStorage.setItem('eb_user', JSON.stringify(updated));
+                document.getElementById('userAvatar').textContent    = (me.name||'?').split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+                document.getElementById('userName').textContent      = me.name;
+                document.getElementById('userRole').textContent      = me.role;
+                document.getElementById('userStatus').textContent    = me.status;
+                document.getElementById('detailName').textContent    = me.name;
+                document.getElementById('detailEmail').textContent   = me.email;
+                document.getElementById('detailRole').textContent    = me.role;
+                document.getElementById('detailStatus').textContent  = me.status;
+                document.getElementById('detailId').textContent      = '#' + me.user_id;
+            })
+            .catch(() => { /* silently use session data */ });
+    }
+
+    /* ── Change password ─────────────────────────────────── */
+    async function changePassword() {
+        const np  = document.getElementById('newPass').value;
+        const cp  = document.getElementById('confirmPass').value;
+        const msg = document.getElementById('passMsg');
+
+        if (!np || np.length < 6) {
+            showPassMsg('Password must be at least 6 characters.', 'error'); return;
+        }
+        if (np !== cp) {
+            showPassMsg('Passwords do not match.', 'error'); return;
+        }
+
+        try {
+            const res = await fetch(`http://localhost:8080/api/users/${user.user_id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ password: np })
+            });
+            if (res.ok) {
+                showPassMsg('Password updated successfully! ✓', 'success');
+                document.getElementById('newPass').value = '';
+                document.getElementById('confirmPass').value = '';
+            } else {
+                showPassMsg('Failed to update. Please try again.', 'error');
+            }
+        } catch {
+            showPassMsg('Cannot reach server. Is Spring Boot running?', 'error');
+        }
+    }
+
+    function showPassMsg(text, type) {
+        const el = document.getElementById('passMsg');
+        el.textContent = text;
+        el.className = 'pass-msg ' + type;
+        el.style.display = 'block';
+        setTimeout(() => { el.style.display = 'none'; }, 4000);
+    }
+
+    /* ── Load user bookings ──────────────────────────────── */
+    async function loadUserBookings() {
+        const list = document.getElementById('userBookingsList');
+        list.innerHTML = '<p style="color:#888; font-style:italic;">Loading bookings…</p>';
+
+        try {
+            const res = await fetch('http://localhost:8080/api/bookings');
+            if (!res.ok) throw new Error('API error');
+            const allBookings = await res.json();
+
+            // Filter bookings belonging to this user (match by user_id or customer name)
+            const myBookings = allBookings.filter(b =>
+                (b.user_id && b.user_id === user.user_id) ||
+                (b.customer && b.customer === user.name)
+            );
+
+            if (!myBookings.length) {
+                list.innerHTML = `<p style="color:#888; font-style:italic;">You have no active bookings.</p>
+                                  <a href="../booking/booking.html" class="save-btn" style="display:inline-flex; width:auto; margin-top:15px; text-decoration:none;">Make a Booking</a>`;
+                return;
+            }
+
+            const statusStyle = s => {
+                if (!s) return 'background:#fef7e0; color:#f29900;';
+                const sl = s.toLowerCase();
+                if (sl === 'confirmed' || sl === 'approved') return 'background:#e6f4ea; color:#1e8e3e;';
+                if (sl === 'cancelled' || sl === 'rejected')  return 'background:#fce8e6; color:#d93025;';
+                return 'background:#fef7e0; color:#f29900;';
+            };
+
+            list.innerHTML = myBookings.map(b => `
+                <div style="border:1px solid #e1d8cd; border-radius:8px; padding:15px; margin-bottom:15px; background:#fff;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+                        <div>
+                            <h3 style="margin:0; font-family:'Cormorant Garamond',serif; font-size:1.3rem; color:#4a4238;">${b.vendor || 'No vendor selected'}</h3>
+                            <p style="margin:3px 0 0; font-size:0.9rem; color:#888;">Ref: ${b.ref || ('#' + b.id)}</p>
+                        </div>
+                        <span style="padding:4px 10px; border-radius:20px; font-size:0.8rem; text-transform:capitalize; font-weight:500; ${statusStyle(b.status)}">
+                            ${b.status || 'Pending'}
+                        </span>
+                    </div>
+                    <div style="font-size:0.95rem; color:#5a5248;">
+                        <p style="margin:5px 0;"><strong>Date:</strong> ${b.eventDate ? new Date(b.eventDate).toLocaleDateString('en-GB',{day:'2-digit',month:'long',year:'numeric'}) : '—'}</p>
+                        <p style="margin:5px 0;"><strong>Services:</strong> ${b.service || '—'}</p>
+                        <p style="margin:5px 0;"><strong>Total:</strong> ${b.total || 'Pending'}</p>
+                    </div>
+                </div>
+            `).join('');
+
+        } catch (e) {
+            list.innerHTML = `<p style="color:#888; font-style:italic;">Could not load bookings — is Spring Boot running?</p>`;
+        }
+    }
+
+    /* ── Logout ──────────────────────────────────────────── */
+    function logout() {
+        sessionStorage.removeItem('eb_user');
+        window.location.href = '../login.html';
+    }
+
+    // Init
+    loadUserBookings();
+</script>
+
+</body>
+</html>
