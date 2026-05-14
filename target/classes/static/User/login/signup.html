@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sign Up — Eternal Bliss</title>
+    <link rel="stylesheet" href="login.css"/>
+    <link rel="stylesheet" href="signup.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- Top navbar -->
+<nav class="su-navbar">
+    <a href="../../index.html" class="su-nav-brand">
+        <span class="su-nav-small">Eternal</span>
+        <span class="su-nav-large">Bliss</span>
+    </a>
+    <a href="../../index.html" class="su-nav-home-btn">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9 22V12h6v10" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        Back to Home
+    </a>
+</nav>
+
+<!-- Background -->
+<div class="bg-canvas">
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+    <div class="bg-blob blob-3"></div>
+    <div class="bg-ring ring-1"></div>
+    <div class="bg-ring ring-2"></div>
+    <div class="bg-petal p1"></div>
+    <div class="bg-petal p2"></div>
+    <div class="bg-petal p3"></div>
+</div>
+
+<div class="page">
+
+    <!-- LEFT PANEL -->
+    <div class="panel-left">
+        <div class="left-inner">
+            <a href="../../index.html" class="brand su-brand-link">
+                <span class="brand-small">Eternal</span>
+                <span class="brand-large">Bliss</span>
+            </a>
+            <div class="left-divider"></div>
+            <p class="left-tagline">Create your<br/>Account</p>
+            <ul class="left-features">
+                <li><span class="feat-dot"></span>Browse &amp; book vendors</li>
+                <li><span class="feat-dot"></span>Track your wedding events</li>
+                <li><span class="feat-dot"></span>Manage your guest list</li>
+                <li><span class="feat-dot"></span>Leave &amp; read reviews</li>
+            </ul>
+            <div class="step-indicator">
+                <div class="step active" id="stepDot1"><div class="step-dot"></div><span>Account</span></div>
+                <div class="step-line"></div>
+                <div class="step" id="stepDot2"><div class="step-dot"></div><span>Password</span></div>
+                <div class="step-line"></div>
+                <div class="step" id="stepDot3"><div class="step-dot"></div><span>Confirm</span></div>
+            </div>
+            <div class="left-ornament">&#10055;</div>
+        </div>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="panel-right su-panel-right">
+        <div class="form-card su-form-card">
+
+            <!-- Progress bar -->
+            <div class="su-progress-wrap">
+                <div class="su-progress-bar" id="progressBar" style="width:33%"></div>
+            </div>
+
+            <!-- STEP 1 -->
+            <div class="su-step" id="step1">
+                <div class="form-head">
+                    <div class="su-step-label">Step 1 of 3</div>
+                    <h1 class="form-title">Account Info</h1>
+                    <p class="form-sub">Tell us a bit about yourself to get started</p>
+                </div>
+                <div class="su-fields">
+                    <div class="su-row">
+                        <div class="field-group">
+                            <label class="field-label">First Name</label>
+                            <div class="field-wrap">
+                                <svg class="field-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="1.4"/><path d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                                <input type="text" id="firstName" class="field-input" placeholder="e.g. Amara"/>
+                            </div>
+                            <span class="su-err" id="err-firstName"></span>
+                        </div>
+                        <div class="field-group">
+                            <label class="field-label">Last Name</label>
+                            <div class="field-wrap">
+                                <svg class="field-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="1.4"/><path d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                                <input type="text" id="lastName" class="field-input" placeholder="e.g. Johnson"/>
+                            </div>
+                            <span class="su-err" id="err-lastName"></span>
+                        </div>
+                    </div>
+                    <div class="field-group">
+                        <label class="field-label">Email Address</label>
+                        <div class="field-wrap">
+                            <svg class="field-icon" viewBox="0 0 24 24" fill="none"><path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.4"/><polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="1.4"/></svg>
+                            <input type="email" id="email" class="field-input" placeholder="you@example.com"/>
+                        </div>
+                        <span class="su-err" id="err-email"></span>
+                    </div>
+                </div>
+                <button class="submit-btn su-next-btn" onclick="goStep(2)">
+                    Continue
+                    <svg class="btn-arrow" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <p class="form-footer">Already have an account? <a href="ml" class="form-footer-link">Sign in here</a></p>
+            </div>
+
+            <!-- STEP 2 -->
+            <div class="su-step" id="step2" style="display:none;">
+                <div class="form-head">
+                    <div class="su-step-label">Step 2 of 3</div>
+                    <h1 class="form-title">Set Password</h1>
+                    <p class="form-sub">Create a strong password to secure your account</p>
+                </div>
+                <div class="su-fields">
+                    <div class="field-group">
+                        <label class="field-label">Password</label>
+                        <div class="field-wrap">
+                            <svg class="field-icon" viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M7 11V7a5 5 0 0110 0v4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                            <input type="password" id="password" class="field-input" placeholder="Min. 8 characters" oninput="checkStrength()"/>
+                            <button type="button" class="eye-btn" onclick="toggleVis('password', this)">
+                                <svg viewBox="0 0 24 24" fill="none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.4"/></svg>
+                            </button>
+                        </div>
+                        <div class="su-strength-wrap">
+                            <div class="su-strength-bar"><div class="su-strength-fill" id="strengthFill"></div></div>
+                            <span class="su-strength-label" id="strengthLabel"></span>
+                        </div>
+                        <span class="su-err" id="err-password"></span>
+                    </div>
+                    <div class="field-group">
+                        <label class="field-label">Confirm Password</label>
+                        <div class="field-wrap">
+                            <svg class="field-icon" viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M7 11V7a5 5 0 0110 0v4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                            <input type="password" id="confirmPass" class="field-input" placeholder="Re-enter your password"/>
+                            <button type="button" class="eye-btn" onclick="toggleVis('confirmPass', this)">
+                                <svg viewBox="0 0 24 24" fill="none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.4"/></svg>
+                            </button>
+                        </div>
+                        <span class="su-err" id="err-confirmPass"></span>
+                    </div>
+
+                </div>
+                <div class="su-btn-row">
+                    <button class="su-back-btn" onclick="goStep(1)">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Back
+                    </button>
+                    <button class="submit-btn su-next-btn" onclick="goStep(3)">
+                        Continue
+                        <svg class="btn-arrow" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- STEP 3 -->
+            <div class="su-step" id="step3" style="display:none;">
+                <div class="form-head">
+                    <div class="su-step-label">Step 3 of 3</div>
+                    <h1 class="form-title">Confirm Details</h1>
+                    <p class="form-sub">Review your information before creating your account</p>
+                </div>
+                <div class="su-summary">
+                    <div class="su-summary-top">
+                        <div class="su-summary-avatar" id="summaryAvatar">A</div>
+                        <div class="su-summary-info">
+                            <span class="su-summary-name" id="summaryName">—</span>
+                            <span class="su-summary-role-tag">Customer</span>
+                        </div>
+                    </div>
+                    <div class="su-summary-rows">
+                        <div class="su-summary-row">
+                            <span class="su-summary-label">Email</span>
+                            <span class="su-summary-val" id="summaryEmail">—</span>
+                        </div>
+                        <div class="su-summary-row">
+                            <span class="su-summary-label">Password</span>
+                            <span class="su-summary-val">&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;</span>
+                        </div>
+                    </div>
+                </div>
+                <label class="su-terms-label">
+                    <input type="checkbox" id="termsCheck" class="remember-check"/>
+                    <span class="remember-custom"></span>
+                    I agree to the <a href="#" class="form-footer-link">Terms of Service</a> &amp; <a href="#" class="form-footer-link">Privacy Policy</a>
+                </label>
+                <span class="su-err" id="err-terms"></span>
+                <div class="form-error" id="formError" style="display:none;">
+                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.4"/><line x1="12" y1="8" x2="12" y2="12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><line x1="12" y1="16" x2="12.01" y2="16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                    <span id="errorText">Something went wrong. Please try again.</span>
+                </div>
+                <div class="su-btn-row">
+                    <button class="su-back-btn" onclick="goStep(2)">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Back
+                    </button>
+                    <button class="submit-btn su-next-btn" id="submitBtn" onclick="handleSignup()">
+                        <span id="btnText">Create Account</span>
+                        <span class="btn-spinner" id="btnSpinner" style="display:none;">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" stroke-dasharray="40" stroke-dashoffset="20" stroke-linecap="round"/></svg>
+              </span>
+                        <svg class="btn-arrow" id="btnArrow" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- SUCCESS -->
+            <div class="su-step su-success" id="stepSuccess" style="display:none;">
+                <div class="su-success-icon">
+                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.4"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h1 class="form-title" style="text-align:center;">Account Created!</h1>
+                <p class="form-sub" style="text-align:center;margin-top:8px;">Your account is ready. Start planning your perfect wedding!</p>
+                <a href="ml" class="submit-btn su-success-btn">
+                    Go to Sign In
+                    <svg class="btn-arrow" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+
+            <div class="card-ornament">&#10022; &nbsp; &#10022; &nbsp; &#10022;</div>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+    let currentStep = 1;
+
+    function goStep(n) {
+        if (n > currentStep && !validateStep(currentStep)) return;
+        document.getElementById('step' + currentStep).style.display = 'none';
+        const next = document.getElementById('step' + n);
+        next.style.display = 'block';
+        next.style.animation = 'fade-up 0.35s ease both';
+        currentStep = n;
+        const pct = {1:33, 2:66, 3:100};
+        document.getElementById('progressBar').style.width = pct[n] + '%';
+        [1,2,3].forEach(i => {
+            document.getElementById('stepDot'+i).classList.toggle('active', i <= n);
+            document.getElementById('stepDot'+i).classList.toggle('done', i < n);
+        });
+        if (n === 3) fillSummary();
+    }
+
+    function validateStep(step) {
+        let ok = true;
+        if (step === 1) {
+            ok = validateField('firstName', v => v.trim().length >= 2, 'At least 2 characters required') && ok;
+            ok = validateField('lastName',  v => v.trim().length >= 2, 'At least 2 characters required') && ok;
+            ok = validateField('email', v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v), 'Please enter a valid email') && ok;
+        }
+        if (step === 2) {
+            ok = validateField('password',    v => v.length >= 8, 'Password must be at least 8 characters') && ok;
+            ok = validateField('confirmPass', v => v === document.getElementById('password').value && v !== '', 'Passwords do not match') && ok;
+        }
+        return ok;
+    }
+
+    function validateField(id, test, msg) {
+        const el  = document.getElementById(id);
+        const err = document.getElementById('err-' + id);
+        if (!test(el.value)) {
+            el.classList.add('field-error');
+            if (err) { err.textContent = msg; err.style.display = 'block'; }
+            return false;
+        }
+        el.classList.remove('field-error');
+        if (err) { err.textContent = ''; err.style.display = 'none'; }
+        return true;
+    }
+
+    function checkStrength() {
+        const val = document.getElementById('password').value;
+        const fill = document.getElementById('strengthFill');
+        const label = document.getElementById('strengthLabel');
+        let score = 0;
+        if (val.length >= 8) score++;
+        if (/[A-Z]/.test(val)) score++;
+        if (/[0-9]/.test(val)) score++;
+        if (/[^A-Za-z0-9]/.test(val)) score++;
+        const levels = [
+            {w:'0%', color:'transparent', text:''},
+            {w:'25%', color:'#c4756a', text:'Weak'},
+            {w:'50%', color:'#c9a96e', text:'Fair'},
+            {w:'75%', color:'#7a9e87', text:'Good'},
+            {w:'100%', color:'#4e8260', text:'Strong'},
+        ];
+        fill.style.width = levels[score].w;
+        fill.style.background = levels[score].color;
+        label.textContent = levels[score].text;
+        label.style.color = levels[score].color;
+    }
+
+    function fillSummary() {
+        const fn = document.getElementById('firstName').value.trim();
+        const ln = document.getElementById('lastName').value.trim();
+        document.getElementById('summaryAvatar').textContent = fn.charAt(0).toUpperCase();
+        document.getElementById('summaryName').textContent   = fn + ' ' + ln;
+        document.getElementById('summaryEmail').textContent  = document.getElementById('email').value.trim();
+    }
+
+    function toggleVis(id, btn) {
+        const input = document.getElementById(id);
+        input.type = input.type === 'password' ? 'text' : 'password';
+        btn.querySelector('svg').innerHTML = input.type === 'text'
+            ? '<path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><line x1="1" y1="1" x2="23" y2="23" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>'
+            : '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.4"/>';
+    }
+
+    async function handleSignup() {
+        if (!document.getElementById('termsCheck').checked) {
+            const err = document.getElementById('err-terms');
+            err.textContent = 'You must agree to the terms to continue.';
+            err.style.display = 'block';
+            return;
+        }
+        document.getElementById('err-terms').style.display = 'none';
+        document.getElementById('formError').style.display = 'none';
+
+        const btn     = document.getElementById('submitBtn');
+        const text    = document.getElementById('btnText');
+        const spinner = document.getElementById('btnSpinner');
+        const arrow   = document.getElementById('btnArrow');
+
+        // Show loading state
+        btn.disabled          = true;
+        text.style.display    = 'none';
+        arrow.style.display   = 'none';
+        spinner.style.display = 'inline-flex';
+
+        const payload = {
+            name:     document.getElementById('firstName').value.trim() + ' ' + document.getElementById('lastName').value.trim(),
+            email:    document.getElementById('email').value.trim(),
+            password: document.getElementById('password').value,
+            role:     'Guest',
+            status:   'Active'
+        };
+
+        // Helper: show success screen
+        function showSuccess() {
+            document.getElementById('step3').style.display        = 'none';
+            document.getElementById('stepSuccess').style.display  = 'block';
+            document.getElementById('stepSuccess').style.animation = 'fade-up 0.4s ease both';
+            document.getElementById('progressBar').style.width    = '100%';
+            document.getElementById('progressBar').style.background = 'linear-gradient(90deg,#7a9e87,#4e8260)';
+            [1,2,3].forEach(i => document.getElementById('stepDot'+i).classList.add('done'));
+        }
+
+        // Helper: show error
+        function showError(msg) {
+            document.getElementById('formError').style.display = 'flex';
+            document.getElementById('errorText').textContent   = msg;
+            btn.disabled          = false;
+            text.style.display    = 'inline';
+            arrow.style.display   = 'inline';
+            spinner.style.display = 'none';
+        }
+
+        try {
+            const response = await fetch('http://localhost:8080/api/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            const msg = await response.text();
+
+            if (response.ok) {
+                showSuccess();
+            } else if (response.status === 400) {
+                showError(msg || 'This email is already registered. Please sign in.');
+            } else {
+                showError('Server error (' + response.status + '). Please try again.');
+            }
+
+        } catch (err) {
+            showError('Cannot connect to server (port 8080). Make sure Spring Boot is running.');
+        }
+    }
+</script>
+
+</body>
+</html>

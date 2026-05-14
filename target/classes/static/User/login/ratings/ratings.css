@@ -1,0 +1,310 @@
+/* ── Page wrapper ────────────────────────────────────────────── */
+.ru-page { padding-top: var(--nav-h); }
+
+/* ── Hero ────────────────────────────────────────────────────── */
+.ru-hero {
+    position: relative;
+    padding: 80px 24px 72px;
+    text-align: center;
+    overflow: hidden;
+}
+.ru-hero-bg {
+    position: absolute; inset: 0;
+    pointer-events: none;
+}
+.ru-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    animation: blob 20s ease-in-out infinite;
+}
+.b1 { width: 500px; height: 400px; background: radial-gradient(circle, rgba(232,196,176,0.50), transparent 70%); top: -10%; left: -5%; animation-duration: 22s; }
+.b2 { width: 400px; height: 380px; background: radial-gradient(circle, rgba(201,169,110,0.30), transparent 70%); bottom: -10%; right: -5%; animation-duration: 26s; animation-delay: -8s; }
+@keyframes blob { 0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(20px,-15px) scale(1.04);}66%{transform:translate(-15px,12px) scale(0.97);} }
+
+.ru-hero-content { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; animation: fade-up 0.8s ease both; }
+
+.ru-eyebrow {
+    display: inline-block;
+    font-size: 0.62rem;
+    font-weight: 400;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,169,110,0.28);
+    border-radius: 20px;
+    padding: 4px 14px;
+    margin-bottom: 16px;
+}
+
+.ru-hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 700;
+    color: var(--deep-rose);
+    line-height: 1.0;
+    margin-bottom: 14px;
+    background: linear-gradient(135deg, var(--deep-rose) 30%, var(--rose) 70%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.ru-hero-title em { font-style: italic; }
+
+.ru-hero-sub {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 36px;
+}
+
+.ru-hero-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+}
+.ru-hstat { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.ru-hstat-val { font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; color: var(--deep-rose); line-height: 1; }
+.ru-hstat-stars { font-size: 0.90rem; color: #e8a816; letter-spacing: 2px; }
+.ru-hstat-label { font-size: 0.62rem; font-weight: 300; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.ru-hstat-div { width: 1px; height: 40px; background: rgba(201,169,110,0.22); }
+
+/* ── Content area ────────────────────────────────────────────── */
+.ru-content { max-width: 1100px; margin: 0 auto; padding: 0 24px 80px; }
+
+/* ── Section ─────────────────────────────────────────────────── */
+.ru-section { margin-bottom: 64px; }
+.ru-section-head { text-align: center; margin-bottom: 36px; }
+.ru-section-tag {
+    display: inline-block;
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,169,110,0.25);
+    border-radius: 20px;
+    padding: 4px 14px;
+    margin-bottom: 10px;
+}
+.ru-section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.0rem);
+    font-weight: 600;
+    color: var(--deep-rose);
+    line-height: 1.1;
+}
+
+/* ── Review form card ────────────────────────────────────────── */
+.ru-form-card {
+    background: rgba(255,255,255,0.80);
+    border: 1px solid rgba(201,169,110,0.20);
+    border-radius: 12px;
+    padding: 32px 36px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 40px rgba(139,58,58,0.08);
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.ru-form { display: flex; flex-direction: column; gap: 18px; }
+.ru-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.ru-field { display: flex; flex-direction: column; gap: 7px; }
+
+.ru-label {
+    font-size: 0.63rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.ru-input-wrap { position: relative; display: flex; align-items: center; }
+.ru-input-icon {
+    position: absolute; left: 13px;
+    width: 15px; height: 15px;
+    color: var(--muted);
+    pointer-events: none;
+    transition: color 0.2s;
+}
+.ru-input {
+    width: 100%;
+    padding: 11px 14px 11px 40px;
+    font-family: var(--font-body);
+    font-size: 0.80rem;
+    font-weight: 300;
+    color: var(--charcoal);
+    background: var(--white);
+    border: 1px solid rgba(201,169,110,0.22);
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.22s, box-shadow 0.22s;
+    box-sizing: border-box;
+}
+.ru-input::placeholder { color: var(--muted); opacity: 0.55; }
+.ru-input:focus { border-color: rgba(201,169,110,0.60); box-shadow: 0 0 0 3px rgba(201,169,110,0.10); }
+.ru-input-wrap:focus-within .ru-input-icon { color: var(--gold); }
+
+.ru-textarea {
+    padding: 12px 14px;
+    resize: vertical;
+    min-height: 100px;
+    font-family: var(--font-body);
+    /* textarea doesn't use input-wrap — no icon padding */
+}
+
+/* ── Star picker ─────────────────────────────────────────────── */
+.ru-star-picker { display: flex; flex-direction: row-reverse; justify-content: flex-end; gap: 6px; }
+.ru-star-picker input[type="radio"] { display: none; }
+.ru-star-picker label {
+    font-size: 2.0rem;
+    color: rgba(201,169,110,0.25);
+    cursor: pointer;
+    transition: color 0.18s, transform 0.18s;
+    line-height: 1;
+}
+.ru-star-picker label:hover,
+.ru-star-picker label:hover ~ label,
+.ru-star-picker input:checked ~ label { color: #e8a816; }
+.ru-star-picker label:hover { transform: scale(1.18); }
+
+/* ── Notice ──────────────────────────────────────────────────── */
+.ru-notice {
+    font-size: 0.74rem;
+    font-weight: 300;
+    padding: 9px 14px;
+    border-radius: 7px;
+}
+.ru-notice.success { color: #4e8260; background: rgba(122,158,135,0.10); border: 1px solid rgba(122,158,135,0.22); }
+.ru-notice.error   { color: var(--rose); background: rgba(196,117,106,0.07); border: 1px solid rgba(196,117,106,0.20); }
+
+/* ── Submit button ───────────────────────────────────────────── */
+.ru-submit-btn {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    background: linear-gradient(135deg, var(--rose), var(--deep-rose));
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 5px 18px rgba(139,58,58,0.25);
+    transition: transform 0.22s, box-shadow 0.22s;
+}
+.ru-submit-btn svg { width: 15px; height: 15px; }
+.ru-submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(139,58,58,0.32); }
+.ru-submit-btn:active { transform: translateY(0); }
+
+/* ── Filter chips ────────────────────────────────────────────── */
+.ru-filters { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+.ru-filter-btn {
+    padding: 7px 18px;
+    border-radius: 24px;
+    border: 1px solid rgba(201,169,110,0.22);
+    background: rgba(255,255,255,0.70);
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 300;
+    color: var(--muted);
+    cursor: pointer;
+    letter-spacing: 0.06em;
+    transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.ru-filter-btn:hover { background: var(--blush); color: var(--deep-rose); border-color: rgba(196,117,106,0.30); }
+.ru-filter-btn.active {
+    background: linear-gradient(135deg, var(--rose), var(--deep-rose));
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 4px 14px rgba(139,58,58,0.22);
+}
+
+/* ── Cards grid ──────────────────────────────────────────────── */
+.ru-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.ru-card {
+    background: rgba(255,255,255,0.80);
+    border: 1px solid rgba(201,169,110,0.18);
+    border-radius: 10px;
+    padding: 22px;
+    box-shadow: 0 4px 20px rgba(139,58,58,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: box-shadow 0.25s, transform 0.25s;
+    backdrop-filter: blur(8px);
+}
+.ru-card:hover { box-shadow: 0 12px 40px rgba(139,58,58,0.12); transform: translateY(-3px); }
+
+.ru-card-top { display: flex; align-items: center; gap: 12px; }
+.ru-card-avatar {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blush), var(--rose));
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+}
+.ru-card-meta { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.ru-card-name { font-size: 0.82rem; font-weight: 500; color: var(--charcoal); }
+.ru-card-service { font-size: 0.68rem; font-weight: 300; color: var(--muted); }
+.ru-card-stars { font-size: 0.80rem; color: #e8a816; letter-spacing: 1px; flex-shrink: 0; }
+
+.ru-card-text {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.96rem;
+    font-weight: 300;
+    color: var(--charcoal);
+    line-height: 1.65;
+    flex: 1;
+}
+
+.ru-card-date {
+    font-size: 0.65rem;
+    font-weight: 300;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+}
+
+/* ── Empty state ─────────────────────────────────────────────── */
+.ru-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 24px;
+    gap: 12px;
+    color: var(--muted);
+}
+.ru-empty-icon { font-size: 2.2rem; color: var(--gold); opacity: 0.45; }
+.ru-empty p { font-family: var(--font-display); font-style: italic; font-size: 1.1rem; font-weight: 300; }
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 900px) {
+    .ru-cards { grid-template-columns: repeat(2, 1fr); }
+    .ru-form-card { padding: 24px 20px; }
+}
+@media (max-width: 580px) {
+    .ru-cards { grid-template-columns: 1fr; }
+    .ru-form-row { grid-template-columns: 1fr; }
+    .ru-form-card { padding: 20px 16px; }
+}

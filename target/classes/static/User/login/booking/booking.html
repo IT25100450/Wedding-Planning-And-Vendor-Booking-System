@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Booking — Eternal Bliss</title>
+    <link rel="stylesheet" href="../../../index.css"/>
+    <link rel="stylesheet" href="booking.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+    <div class="nav-inner">
+        <a href="../../../index.html" class="nav-logo">
+            <span class="nav-logo-small">Eternal</span>
+            <span class="nav-logo-large">Bliss</span>
+        </a>
+        <div class="nav-actions">
+            <a href="../../../index.html" class="nav-login-btn" style="gap:0.5rem;">
+                <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M19 12H5M12 5l-7 7 7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Back to Menu
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="or-page">
+
+    <!-- HERO -->
+    <div class="or-hero">
+        <div class="or-hero-bg">
+            <div class="or-blob b1"></div>
+            <div class="or-blob b2"></div>
+        </div>
+        <div class="or-hero-content">
+            <span class="or-eyebrow">Step-by-Step Booking</span>
+            <h1 class="or-hero-title">Plan Your<br/><em>Perfect Day</em></h1>
+            <p class="or-hero-sub">Choose your vendors, venue, date and services — we'll calculate everything for you.</p>
+        </div>
+    </div>
+
+    <!-- MAIN LAYOUT -->
+    <div class="or-layout">
+
+        <!-- LEFT — FORM -->
+        <div class="or-form-col">
+
+            <!-- Step 1: Vendor -->
+            <div class="or-card" id="card-vendor">
+                <div class="or-card-head">
+                    <div class="or-step-num">01</div>
+                    <div>
+                        <h2 class="or-card-title">Select Vendor</h2>
+                        <p class="or-card-sub">Choose your primary wedding vendor</p>
+                    </div>
+                </div>
+                <div class="or-field">
+                    <label class="or-label">Vendors</label>
+                    <div class="or-checkbox-list" id="vendorCheckList" style="background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; max-height: 150px; overflow-y: auto; padding: 8px; display: flex; flex-direction: column; gap: 4px;">
+                        <!-- populated via JS -->
+                    </div>
+                </div>
+                <!-- Vendor info card shown on selection -->
+                <div class="or-vendor-info" id="vendorInfo" style="display:none;"></div>
+            </div>
+
+            <!-- Step 2: Venue -->
+            <div class="or-card" id="card-venue">
+                <div class="or-card-head">
+                    <div class="or-step-num">02</div>
+                    <div>
+                        <h2 class="or-card-title">Choose Venue</h2>
+                        <p class="or-card-sub">Select your dream wedding location</p>
+                    </div>
+                </div>
+                <div class="or-field">
+                    <label class="or-label">Venue</label>
+                    <div class="or-select-wrap">
+                        <svg class="or-select-icon" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+                        <select id="selVenue" class="or-select" onchange="onVenueChange()">
+                            <option value="">— Select a venue —</option>
+                            <option value="lakeside"  data-price="80000"  data-cap="150">Lakeside Garden — Rs. 80,000 (cap. 150)</option>
+                            <option value="ballroom"  data-price="150000" data-cap="300">Grand Ballroom — Rs. 150,000 (cap. 300)</option>
+                            <option value="rosewood"  data-price="200000" data-cap="250">Rosewood Estate — Rs. 200,000 (cap. 250)</option>
+                            <option value="chapel"    data-price="60000"  data-cap="80">Cliffside Chapel — Rs. 60,000 (cap. 80)</option>
+                            <option value="beachfront" data-price="175000" data-cap="200">Beachfront Pavilion — Rs. 175,000 (cap. 200)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="or-field">
+                    <label class="or-label">Number of Guests</label>
+                    <div class="or-input-wrap">
+                        <svg class="or-input-icon" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.4"/><circle cx="16" cy="7" r="4" stroke="currentColor" stroke-width="1.4"/><path d="M2 20c0-3.866 3.134-7 7-7M15 13c3.866 0 7 3.134 7 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                        <input type="number" id="guestCount" class="or-input" placeholder="e.g. 120" min="1" max="500" oninput="onGuestsChange()"/>
+                    </div>
+                    <span class="or-hint" id="venueCapHint"></span>
+                </div>
+            </div>
+
+            <!-- Step 3: Date & Time -->
+            <div class="or-card" id="card-datetime">
+                <div class="or-card-head">
+                    <div class="or-step-num">03</div>
+                    <div>
+                        <h2 class="or-card-title">Date &amp; Time</h2>
+                        <p class="or-card-sub">Pick your wedding day and ceremony time</p>
+                    </div>
+                </div>
+                <div class="or-row">
+                    <div class="or-field">
+                        <label class="or-label">Wedding Date</label>
+                        <div class="or-input-wrap">
+                            <svg class="or-input-icon" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                            <input type="date" id="weddingDate" class="or-input" oninput="calcPrice()"/>
+                        </div>
+                        <span class="or-hint" id="dateHint"></span>
+                    </div>
+                    <div class="or-field">
+                        <label class="or-label">Ceremony Time</label>
+                        <div class="or-select-wrap">
+                            <svg class="or-select-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                            <select id="selTime" class="or-select" onchange="calcPrice()">
+                                <option value="">— Select time —</option>
+                                <option value="morning"   data-surcharge="0">Morning (8:00 – 11:00 AM)</option>
+                                <option value="midday"    data-surcharge="0">Midday (11:00 AM – 2:00 PM)</option>
+                                <option value="afternoon" data-surcharge="5000">Afternoon (2:00 – 5:00 PM) +Rs.5,000</option>
+                                <option value="evening"   data-surcharge="15000">Evening (5:00 – 9:00 PM) +Rs.15,000</option>
+                                <option value="night"     data-surcharge="25000">Night (9:00 PM – midnight) +Rs.25,000</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="or-field">
+                    <label class="or-label">Event Duration</label>
+                    <div class="or-select-wrap">
+                        <svg class="or-select-icon" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                        <select id="selDuration" class="or-select" onchange="calcPrice()">
+                            <option value="4"  data-surcharge="0">4 Hours (standard)</option>
+                            <option value="6"  data-surcharge="10000">6 Hours +Rs.10,000</option>
+                            <option value="8"  data-surcharge="20000">8 Hours +Rs.20,000</option>
+                            <option value="12" data-surcharge="40000">Full Day (12 hrs) +Rs.40,000</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Wedding Services -->
+            <div class="or-card" id="card-services">
+                <div class="or-card-head">
+                    <div class="or-step-num">04</div>
+                    <div>
+                        <h2 class="or-card-title">Wedding Services</h2>
+                        <p class="or-card-sub">Add one or more services to your booking</p>
+                    </div>
+                </div>
+
+                <!-- Dropdown + Add button -->
+                <div class="or-svc-add-row">
+                    <div class="or-select-wrap" style="flex:1;">
+                        <svg class="or-select-icon" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 5 5.6.8-4 3.9.9 5.3L12 14.5 7.1 17l.9-5.3L4 7.8l5.6-.8z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+                        <select id="svcDropdown" class="or-select">
+                            <option value="">— Select a service —</option>
+                        </select>
+                    </div>
+                    <button class="or-svc-add-btn" onclick="addService()">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                        Add
+                    </button>
+                </div>
+
+                <!-- Added services list -->
+                <div id="svcAddedList" class="or-svc-added-list">
+                    <div class="or-svc-empty" id="svcEmpty">
+                        <span>No services added yet — select one above.</span>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /form col -->
+
+        <!-- RIGHT — PRICE SUMMARY (sticky) -->
+        <div class="or-summary-col">
+            <div class="or-summary" id="summaryPanel">
+                <div class="or-summary-head">
+                    <h3 class="or-summary-title">Order Summary</h3>
+                    <span class="or-summary-sub">Live price estimate</span>
+                </div>
+
+                <div class="or-summary-body">
+
+                    <!-- Line items -->
+                    <div id="summaryLines">
+                        <div class="or-empty-summary">
+                            <div class="or-empty-icon">❧</div>
+                            <p>Select options to see your price breakdown</p>
+                        </div>
+                    </div>
+
+                    <div class="or-summary-divider" id="summaryDivider" style="display:none;"></div>
+
+                    <!-- Subtotals -->
+                    <div class="or-subtotals" id="summarySubtotals" style="display:none;">
+                        <div class="or-subtotal-row">
+                            <span>Subtotal</span>
+                            <span id="subTotal">Rs. 0</span>
+                        </div>
+                        <div class="or-subtotal-row">
+                            <span>Time &amp; Duration</span>
+                            <span id="subTime">Rs. 0</span>
+                        </div>
+                        <div class="or-subtotal-row">
+                            <span>Add-on Services</span>
+                            <span id="subServices">Rs. 0</span>
+                        </div>
+                        <div class="or-subtotal-row">
+                            <span>Service Charge (5%)</span>
+                            <span id="subTax">Rs. 0</span>
+                        </div>
+                    </div>
+
+                    <!-- Grand total -->
+                    <div class="or-grand-total" id="grandTotalWrap" style="display:none;">
+                        <span class="or-grand-label">Total Estimate</span>
+                        <span class="or-grand-val" id="grandTotal">Rs. 0</span>
+                    </div>
+
+                    <!-- Deposit note -->
+                    <div class="or-deposit-note" id="depositNote" style="display:none;">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                        <span>Deposit required: <strong id="depositVal">Rs. 0</strong> (25% to confirm)</span>
+                    </div>
+
+                </div>
+
+                <!-- CTA -->
+                <button class="or-book-btn" id="bookBtn" onclick="placeOrder()">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22 4 12 14.01 9 11.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Confirm Booking
+                </button>
+                <p class="or-book-note">No payment now — you'll be contacted within 24 hours to confirm.</p>
+
+            </div>
+        </div>
+
+    </div><!-- /layout -->
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <span class="fb-small">Eternal</span>
+            <span class="fb-large">Bliss</span>
+        </div>
+        <p class="footer-copy">© 2025 Eternal Bliss Wedding Planning. All rights reserved.</p>
+        <div class="footer-ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+    </div>
+</footer>
+
+<!-- SUCCESS OVERLAY -->
+<div class="or-success-overlay" id="successOverlay" style="display:none;">
+    <div class="or-success-card">
+        <div class="or-success-icon">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.4"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h2 class="or-success-title">Booking Submitted!</h2>
+        <p class="or-success-sub">Your booking has been received. Our team will be in touch within 24 hours to confirm your reservation.</p>
+        <div class="or-success-ref">
+            Ref: <span id="successRef"></span>
+        </div>
+        <div class="or-success-summary" id="successSummary"></div>
+        <a href="../useraccount/useraccount.html?v=2" class="or-success-btn">View My Bookings</a>
+    </div>
+</div>
+
+<script>
+    // ── Navbar scroll
+    window.addEventListener('scroll', () => {
+        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // ── Data
+    let vendors = {};
+
+    async function loadVendors() {
+        try {
+            const response = await fetch('http://localhost:8080/vendors');
+            if (!response.ok) throw new Error('Network response was not ok');
+            const data = await response.json();
+            
+            const emojis = { 'Planner/Coordinator':'📋','Venue Manager':'🏛','Caterer':'🍽','Creative (Photo/Video)':'📷','Entertainment':'🎵','Other':'⭐' };
+            
+            const list = document.getElementById('vendorCheckList');
+            
+            data.forEach(v => {
+                if (v.status && v.status.toLowerCase() === 'inactive') return;
+
+                const key = 'vendor_' + v.vendor_id;
+                const priceNum = parseInt(v.vendor_price) || 0;
+                
+                vendors[key] = {
+                    name: v.vendor_name || 'Unnamed Vendor',
+                    desc: v.description || (v.vendor_type + ' services'),
+                    price: priceNum,
+                    emoji: emojis[v.vendor_type] || '⭐'
+                };
+                
+                const lbl = document.createElement('label');
+                lbl.style.display = 'flex';
+                lbl.style.alignItems = 'center';
+                lbl.style.padding = '6px 10px';
+                lbl.style.cursor = 'pointer';
+                lbl.style.borderRadius = '4px';
+                lbl.onmouseover = () => lbl.style.background = '#f5f5f5';
+                lbl.onmouseout = () => lbl.style.background = 'transparent';
+                lbl.innerHTML = `<input type="checkbox" value="${key}" onchange="onVendorChange()" style="margin-right:10px; accent-color: var(--primary);"> ${vendors[key].name} — Rs. ${priceNum.toLocaleString()}`;
+                list.appendChild(lbl);
+            });
+        } catch (error) {
+            console.error('Failed to load vendors:', error);
+        }
+    }
+
+    const venues = {
+        lakeside:   { name:'Lakeside Garden',      cap:150, price:80000,  emoji:'🌿' },
+        ballroom:   { name:'Grand Ballroom',       cap:300, price:150000, emoji:'✨' },
+        rosewood:   { name:'Rosewood Estate',      cap:250, price:200000, emoji:'🏰' },
+        chapel:     { name:'Cliffside Chapel',     cap:80,  price:60000,  emoji:'⛪' },
+        beachfront: { name:'Beachfront Pavilion',  cap:200, price:175000, emoji:'🏖️' },
+    };
+
+    let services = [];
+    let addedServices = [];
+
+    async function loadServices() {
+        try {
+            const response = await fetch('http://localhost:8080/api/services');
+            if (!response.ok) throw new Error('Network response was not ok');
+            services = await response.json();
+            renderServices();
+        } catch (error) {
+            console.error('Failed to load services:', error);
+        }
+    }
+
+    function renderServices() {
+        const dropdown = document.getElementById('svcDropdown');
+        dropdown.innerHTML = '<option value="">— Select a service —</option>' +
+            services.map(s => `<option value="${s.service_id}">${s.emoji || '✨'} ${s.service_name} — Rs. ${s.price.toLocaleString()}</option>`).join('');
+    }
+
+    function addService() {
+        const dropdown = document.getElementById('svcDropdown');
+        const id = dropdown.value;
+        if (!id) return;
+        if (addedServices.includes(id)) {
+            dropdown.value = '';
+            return;
+        }
+        addedServices.push(id);
+        dropdown.value = '';
+        renderAddedServices();
+        calcPrice();
+    }
+
+    function removeService(id) {
+        addedServices = addedServices.filter(x => String(x) !== String(id));
+        renderAddedServices();
+        calcPrice();
+    }
+
+    function renderAddedServices() {
+        const list  = document.getElementById('svcAddedList');
+        const empty = document.getElementById('svcEmpty');
+        if (!addedServices.length) {
+            list.innerHTML = '<div class="or-svc-empty" id="svcEmpty"><span>No services added yet — select one above.</span></div>';
+            return;
+        }
+        list.innerHTML = addedServices.map(id => {
+            const s = services.find(x => String(x.service_id) === String(id));
+            return `
+          <div class="or-svc-row">
+            <span class="or-svc-row-emoji">${s.emoji || '✨'}</span>
+            <div class="or-svc-row-info">
+              <span class="or-svc-row-name">${s.service_name}</span>
+              <span class="or-svc-row-cat">${s.category || 'Service'}</span>
+            </div>
+            <span class="or-svc-row-price">Rs. ${s.price.toLocaleString()}</span>
+            <button class="or-svc-remove" onclick="removeService('${s.service_id}')" title="Remove">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+          </div>`;
+        }).join('');
+    }
+
+    // ── Vendor change
+    function onVendorChange() {
+        const checkboxes = document.querySelectorAll('#vendorCheckList input[type="checkbox"]:checked');
+        const selectedKeys = Array.from(checkboxes).map(cb => cb.value);
+        const info = document.getElementById('vendorInfo');
+        
+        if (selectedKeys.length > 0) {
+            info.style.display = 'flex';
+            info.style.flexDirection = 'column';
+            info.style.gap = '10px';
+            info.innerHTML = selectedKeys.map(key => {
+                const v = vendors[key];
+                if(!v) return '';
+                return `
+                <div style="display:flex; align-items:center; background:#f9f9f9; padding:10px; border-radius:8px;">
+                  <div class="or-vinfo-emoji" style="margin-right:15px; font-size:1.5rem;">${v.emoji}</div>
+                  <div class="or-vinfo-body" style="flex:1; display:flex; flex-direction:column;">
+                    <span class="or-vinfo-name" style="font-weight:600;">${v.name}</span>
+                    <span class="or-vinfo-desc" style="font-size:0.9rem; color:#666;">${v.desc}</span>
+                  </div>
+                  <span class="or-vinfo-price" style="font-weight:600;">${v.price ? 'Rs. '+v.price.toLocaleString() : 'Included'}</span>
+                </div>`;
+            }).join('');
+        } else {
+            info.style.display = 'none';
+        }
+        calcPrice();
+    }
+
+    // ── Venue change
+    function onVenueChange() {
+        const sel = document.getElementById('selVenue');
+        const key = sel.value;
+        const hint = document.getElementById('venueCapHint');
+        if (key && venues[key]) {
+            hint.textContent = `${venues[key].emoji} ${venues[key].name} — capacity up to ${venues[key].cap} guests`;
+            hint.className = 'or-hint or-hint-info';
+        } else {
+            hint.textContent = '';
+        }
+        calcPrice();
+    }
+
+    // ── Guests change
+    function onGuestsChange() {
+        const key   = document.getElementById('selVenue').value;
+        const count = parseInt(document.getElementById('guestCount').value) || 0;
+        const hint  = document.getElementById('venueCapHint');
+        if (key && venues[key] && count > venues[key].cap) {
+            hint.textContent = `⚠️ Exceeds capacity of ${venues[key].cap} guests for ${venues[key].name}`;
+            hint.className = 'or-hint or-hint-warn';
+        } else if (key && venues[key]) {
+            hint.textContent = `${venues[key].emoji} ${venues[key].name} — capacity up to ${venues[key].cap} guests`;
+            hint.className = 'or-hint or-hint-info';
+        }
+        calcPrice();
+    }
+
+    // ── Date hint
+    document.getElementById('weddingDate').addEventListener('change', function() {
+        const hint = document.getElementById('dateHint');
+        if (!this.value) { hint.textContent = ''; return; }
+        const d    = new Date(this.value + 'T00:00:00');
+        const today= new Date(); today.setHours(0,0,0,0);
+        const days = Math.ceil((d - today) / 86400000);
+        if (days < 0)       { hint.textContent = '⚠️ Date is in the past'; hint.className='or-hint or-hint-warn'; }
+        else if (days < 30) { hint.textContent = `⚠️ Only ${days} days away — please call us to confirm availability`; hint.className='or-hint or-hint-warn'; }
+        else                { hint.textContent = `✓ ${days} days until your wedding!`; hint.className='or-hint or-hint-ok'; }
+    });
+
+    // ── PRICE CALCULATOR
+    function fmt(n) { return 'Rs. ' + Math.round(n).toLocaleString(); }
+
+    function calcPrice() {
+        const checkboxes = document.querySelectorAll('#vendorCheckList input[type="checkbox"]:checked');
+        const vendorKeys = Array.from(checkboxes).map(cb => cb.value);
+        const venueKey   = document.getElementById('selVenue').value;
+        const timeSel    = document.getElementById('selTime');
+        const durSel     = document.getElementById('selDuration');
+        const checkedSvc = addedServices;
+
+        const vendorPrice  = vendorKeys.reduce((sum, key) => sum + (vendors[key] ? vendors[key].price : 0), 0);
+        const venuePrice   = venueKey  && venues[venueKey]   ? venues[venueKey].price   : 0;
+        const timeSurcharge  = timeSel.value ? parseInt(timeSel.selectedOptions[0].dataset.surcharge)||0 : 0;
+        const durSurcharge   = parseInt(durSel.selectedOptions[0]?.dataset.surcharge)||0;
+        const svcTotal = checkedSvc.reduce((sum, id) => {
+            const s = services.find(x => String(x.service_id) === String(id));
+            return sum + (s ? s.price : 0);
+        }, 0);
+
+        const subtotal  = vendorPrice + venuePrice;
+        const timeCost  = timeSurcharge + durSurcharge;
+        const taxBase   = subtotal + timeCost + svcTotal;
+        const tax       = Math.round(taxBase * 0.05);
+        const grand     = taxBase + tax;
+        const deposit   = Math.round(grand * 0.25);
+
+        // Build lines
+        const lines = document.getElementById('summaryLines');
+        const divider   = document.getElementById('summaryDivider');
+        const subtotals = document.getElementById('summarySubtotals');
+        const grandWrap = document.getElementById('grandTotalWrap');
+        const depNote   = document.getElementById('depositNote');
+
+        const hasAnything = vendorKeys.length > 0 || venueKey;
+        if (!hasAnything) {
+            lines.innerHTML = `<div class="or-empty-summary"><div class="or-empty-icon">❧</div><p>Select options to see your price breakdown</p></div>`;
+            divider.style.display = subtotals.style.display = grandWrap.style.display = depNote.style.display = 'none';
+            return;
+        }
+
+        let html = '';
+        vendorKeys.forEach(key => {
+            if (vendors[key]) {
+                const v = vendors[key];
+                html += lineHTML(v.emoji + ' ' + v.name, v.price ? fmt(v.price) : 'Included');
+            }
+        });
+        if (venueKey && venues[venueKey]) {
+            const v = venues[venueKey];
+            html += lineHTML('📍 ' + v.name, fmt(v.price));
+        }
+        if (timeSurcharge > 0) {
+            html += lineHTML('🕐 Time slot surcharge', fmt(timeSurcharge));
+        }
+        if (durSurcharge > 0) {
+            html += lineHTML('⏱ Extended duration', fmt(durSurcharge));
+        }
+        checkedSvc.forEach(id => {
+            const s = services.find(x => String(x.service_id) === String(id));
+            if (s) html += lineHTML((s.emoji || '✨') + ' ' + s.service_name, fmt(s.price));
+        });
+        lines.innerHTML = html;
+
+        divider.style.display   = 'block';
+        subtotals.style.display = 'block';
+        grandWrap.style.display = 'flex';
+        depNote.style.display   = 'flex';
+
+        document.getElementById('subTotal').textContent    = fmt(subtotal);
+        document.getElementById('subTime').textContent     = fmt(timeCost);
+        document.getElementById('subServices').textContent = fmt(svcTotal);
+        document.getElementById('subTax').textContent      = fmt(tax);
+        document.getElementById('grandTotal').textContent  = fmt(grand);
+        document.getElementById('depositVal').textContent  = fmt(deposit);
+    }
+
+    function lineHTML(label, value) {
+        return `<div class="or-line"><span class="or-line-label">${label}</span><span class="or-line-val">${value}</span></div>`;
+    }
+
+    // ── Place order (user details come from login session)
+    function placeOrder() {
+        const date   = document.getElementById('weddingDate').value;
+        const checkboxes = document.querySelectorAll('#vendorCheckList input[type="checkbox"]:checked');
+        const vendorKeys = Array.from(checkboxes).map(cb => cb.value);
+        const venue  = document.getElementById('selVenue').value;
+
+        if (vendorKeys.length === 0){ shake('vendorCheckList');   return; }
+        if (!venue) { shake('selVenue');    return; }
+        if (!date)  { shake('weddingDate'); return; }
+
+        const ref    = 'EB-' + Date.now().toString(36).toUpperCase();
+        const grand  = document.getElementById('grandTotal').textContent;
+        const vName  = vendorKeys.map(key => vendors[key]?.name).filter(Boolean).join(', ') || '';
+        const vnName = venues[venue]?.name   || '';
+        const svcNames = addedServices.map(id => services.find(x => String(x.service_id) === String(id))?.service_name).filter(Boolean).join(', ') || 'None';
+
+        // ── Connect to Java Backend ──
+        const sessionUser = JSON.parse(sessionStorage.getItem('eb_user') || '{}');
+        const customerName = sessionUser.name || 'Guest';
+
+        const newBooking = {
+            ref:       ref,
+            customer:  customerName,
+            vendor:    vName,
+            service:   svcNames !== 'None' ? svcNames : (vName + ' — ' + vnName),
+            eventDate: date,
+            status:    'pending',
+            total:     grand,
+            notes:     `Venue: ${vnName}. Add-ons: ${svcNames}.`,
+            createdAt: new Date().toISOString().slice(0, 10),
+            userId:    sessionUser.user_id ? String(sessionUser.user_id) : null
+        };
+
+        fetch('http://localhost:8080/api/bookings', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newBooking)
+        })
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        })
+        .then(data => {
+            document.getElementById('successRef').textContent = data.ref || ref;
+            document.getElementById('successSummary').innerHTML = `
+            <div class="or-suc-row"><span>Ref</span><strong>${data.ref || ref}</strong></div>
+            <div class="or-suc-row"><span>Vendor</span><strong>${vName}</strong></div>
+            <div class="or-suc-row"><span>Venue</span><strong>${vnName}</strong></div>
+            <div class="or-suc-row"><span>Date</span><strong>${new Date(date+'T00:00:00').toLocaleDateString('en-GB',{day:'2-digit',month:'long',year:'numeric'})}</strong></div>
+            <div class="or-suc-row"><span>Services</span><strong>${svcNames}</strong></div>
+            <div class="or-suc-row"><span>Total Estimate</span><strong>${grand}</strong></div>`;
+
+            document.getElementById('successOverlay').style.display = 'flex';
+        })
+        .catch(err => {
+            console.error('Failed to submit booking:', err);
+            alert('Failed to submit booking. Please try again.');
+        });
+    }
+
+    function shake(id) {
+        const el = document.getElementById(id);
+        el.classList.add('or-shake');
+        el.focus();
+        setTimeout(() => el.classList.remove('or-shake'), 500);
+    }
+
+    // ── Init
+    loadVendors();
+    loadServices();
+    // Set min date to today
+    document.getElementById('weddingDate').min = new Date().toISOString().split('T')[0];
+</script>
+
+</body>
+</html>
