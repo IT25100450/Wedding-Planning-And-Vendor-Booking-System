@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel — Eternal Bliss</title>
+    <link rel="stylesheet" href="adminpanel.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <a href="../../index.html" class="logo">
+                <span class="sb-small">Eternal</span>
+                <span class="sb-large">Bliss</span>
+            </a>
+            <span class="sb-badge">Admin</span>
+        </div>
+
+        <nav class="sidebar-nav">
+            <span class="nav-section-label">Management</span>
+            <a href="usermanagement/usermanagement.html" class="nav-item">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="1.4" />
+                    <path d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="currentColor" stroke-width="1.4"
+                        stroke-linecap="round" />
+                </svg>
+                Users
+            </a>
+            <a href="vendormanagement/vendormanagement.html" class="nav-item">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <rect x="4" y="10" width="16" height="11" rx="1" stroke="currentColor" stroke-width="1.4" />
+                    <path d="M8 10V8a4 4 0 018 0v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+                    <path d="M10 16h4M12 14v4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+                </svg>
+                Vendors
+            </a>
+            <a href="servicemanagement/servicemanagement.html" class="nav-item">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2" stroke="currentColor"
+                        stroke-width="1.4" stroke-linecap="round" />
+                    <rect x="9" y="3" width="6" height="4" rx="1" stroke="currentColor" stroke-width="1.4" />
+                    <path d="M9 12h6M9 16h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+                </svg>
+                Services
+            </a>
+            <a href="bookingmanagement/bookingmanagement.html" class="nav-item">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <rect x="4" y="5" width="16" height="16" rx="1" stroke="currentColor" stroke-width="1.4" />
+                    <path d="M8 3v4M16 3v4M4 11h16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+                    <path d="M9 16l2 2 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                Bookings
+            </a>
+            <a href="weddingplanner/weddingplanner.html" class="nav-item">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2l2.4 5 5.6.8-4 3.9.9 5.3L12 14.5 7.1 17l.9-5.3L4 7.8l5.6-.8z" stroke="currentColor"
+                        stroke-width="1.4" stroke-linejoin="round" />
+                </svg>
+                Wedding Planner
+            </a>
+            <a href="ratingsmanagement/ratingsmanagement.html" class="nav-item">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M4 5h16v11H14l-2 3-2-3H4V5z" stroke="currentColor" stroke-width="1.4"
+                        stroke-linejoin="round" />
+                    <path d="M8 10h8M8 13h5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+                </svg>
+                Reviews
+            </a>
+
+
+            <a href="adminpanel.html" class="nav-item active">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="currentColor" stroke-width="1.4"
+                        stroke-linejoin="round" />
+                    <path d="M9 22V12h6v10" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" />
+                </svg>
+                Homepage
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="admin-avatar" id="sidebarAvatar">A</div>
+            <div class="admin-info">
+                <span class="admin-name" id="sidebarName">Admin User</span>
+                <span class="admin-role" id="sidebarRole">Administrator</span>
+            </div>
+            <button onclick="logout()" title="Logout"
+                style="background:none;border:none;cursor:pointer;color:var(--text-muted,#888);margin-left:auto;padding:4px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" stroke="currentColor" stroke-width="1.4"
+                        stroke-linecap="round" />
+                    <polyline points="16 17 21 12 16 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <line x1="21" y1="12" x2="9" y2="12" stroke="currentColor" stroke-width="1.4"
+                        stroke-linecap="round" />
+                </svg>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main">
+
+        <!-- Topbar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <h2 class="page-title">Dashboard Overview</h2>
+                <p class="page-date" id="currentDate"></p>
+            </div>
+            <div class="topbar-right">
+                <div class="search-box">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.4" />
+                        <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+                    </svg>
+                    <input type="text" placeholder="Search records…" />
+                </div>
+
+            </div>
+        </header>
+
+        <!-- Stats Row -->
+        <section class="stats-row">
+            <div class="stat-card" style="--accent: #c4756a;">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="1.4" />
+                        <path d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="currentColor" stroke-width="1.4"
+                            stroke-linecap="round" />
+                    </svg>
+                </div>
+                <div class="stat-info">
+                    <span class="stat-value" id="statUsers">…</span>
+                    <span class="stat-label">Total Users</span>
+                </div>
+                <span class="stat-trend up" id="statUsersTrend"></span>
+            </div>
+
+            <div class="stat-card" style="--accent: #c9a96e;">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <rect x="4" y="10" width="16" height="11" rx="1" stroke="currentColor" stroke-width="1.4" />
+                        <path d="M8 10V8a4 4 0 018 0v2" stroke="currentColor" stroke-width="1.4"
+                            stroke-linecap="round" />
+                    </svg>
+                </div>
+                <div class="stat-info">
+                    <span class="stat-value" id="statVendors">…</span>
+                    <span class="stat-label">Vendors Listed</span>
+                </div>
+                <span class="stat-trend up"></span>
+            </div>
+
+            <div class="stat-card" style="--accent: #8b3a3a;">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <rect x="4" y="5" width="16" height="16" rx="1" stroke="currentColor" stroke-width="1.4" />
+                        <path d="M8 3v4M16 3v4M4 11h16" stroke="currentColor" stroke-width="1.4"
+                            stroke-linecap="round" />
+                    </svg>
+                </div>
+                <div class="stat-info">
+                    <span class="stat-value" id="statBookings">…</span>
+                    <span class="stat-label">Active Bookings</span>
+                </div>
+                <span class="stat-trend down"></span>
+            </div>
+        </section>
+
+        <!-- Middle Row -->
+        <section class="mid-row">
+
+            <!-- Quick Access -->
+            <div class="panel quick-access">
+                <div class="panel-header">
+                    <h3 class="panel-title">Quick Access</h3>
+                    <span class="panel-sub">Manage records</span>
+                </div>
+                <div class="qa-grid">
+                    <a href="usermanagement/usermanagement.html" class="qa-btn">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="1.4" />
+                            <path d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="currentColor" stroke-width="1.4"
+                                stroke-linecap="round" />
+                        </svg>
+                        <span>Users</span>
+                    </a>
+                    <a href="vendormanagement/vendormanagement.html" class="qa-btn">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <rect x="4" y="10" width="16" height="11" rx="1" stroke="currentColor" stroke-width="1.4" />
+                            <path d="M8 10V8a4 4 0 018 0v2" stroke="currentColor" stroke-width="1.4"
+                                stroke-linecap="round" />
+                        </svg>
+                        <span>Vendors</span>
+                    </a>
+                    <a href="bookingmanagement/bookingmanagement.html" class="qa-btn">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <rect x="4" y="5" width="16" height="16" rx="1" stroke="currentColor" stroke-width="1.4" />
+                            <path d="M8 3v4M16 3v4M4 11h16" stroke="currentColor" stroke-width="1.4"
+                                stroke-linecap="round" />
+                        </svg>
+                        <span>Bookings</span>
+                    </a>
+                    <a href="weddingplanner/weddingplanner.html" class="qa-btn">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2l2.4 5 5.6.8-4 3.9.9 5.3L12 14.5 7.1 17l.9-5.3L4 7.8l5.6-.8z"
+                                stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" />
+                        </svg>
+                        <span>Wedding Planner</span>
+                    </a>
+                    <a href="ratingsmanagement/ratingsmanagement.html" class="qa-btn">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M4 5h16v11H14l-2 3-2-3H4V5z" stroke="currentColor" stroke-width="1.4"
+                                stroke-linejoin="round" />
+                        </svg>
+                        <span>Reviews</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="panel activity-panel">
+                <div class="panel-header">
+                    <h3 class="panel-title">Recent Activity</h3>
+                    <a href="#" class="panel-link">View all →</a>
+                </div>
+                <ul class="activity-list" id="activityList">
+                    <li class="activity-item">
+                        <div class="act-body">
+                            <span class="act-text">Loading activity...</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </section>
+
+
+
+    </div><!-- /main -->
+
+    <script>
+        /* ── Auth Guard ─────────────────────────────── */
+        const __session = sessionStorage.getItem('eb_user');
+        if (!__session) {
+            window.location.href = '../../User/login/login.html';
+        }
+        const __admin = JSON.parse(__session || '{}');
+        const adminRoles = ['admin', 'super admin', 'venue manager', 'vendor manager', 'guest coordinator'];
+        if (!adminRoles.includes((__admin.role || '').toLowerCase())) {
+            window.location.href = '../../User/login/login.html';
+        }
+
+        /* ── Populate sidebar with real admin info ─── */
+        document.getElementById('sidebarAvatar').textContent = (__admin.name || 'A').charAt(0).toUpperCase();
+        document.getElementById('sidebarName').textContent = __admin.name || 'Admin User';
+        document.getElementById('sidebarRole').textContent = __admin.role || 'Administrator';
+
+        /* ── Logout ─────────────────────────────────── */
+        function logout() {
+            sessionStorage.removeItem('eb_user');
+            window.location.href = '../../User/login/login.html';
+        }
+
+        /* ── Set current date ──────────────────────── */
+        const d = new Date();
+        document.getElementById('currentDate').textContent =
+            d.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+        /* ── Fetch data for stats & activity ──────────────────── */
+        let allActivity = [];
+
+        function renderActivity() {
+            const list = document.getElementById('activityList');
+            if (allActivity.length === 0) {
+                list.innerHTML = `<li class="activity-item"><div class="act-body"><span class="act-text">No recent activity.</span></div></li>`;
+                return;
+            }
+
+            // Sort newest first
+            allActivity.sort((a, b) => b.timestamp - a.timestamp);
+            const top5 = allActivity.slice(0, 5);
+
+            list.innerHTML = top5.map(act => `
+            <li class="activity-item">
+                <div class="act-dot" style="background:${act.color};"></div>
+                <div class="act-body">
+                    <span class="act-text">${act.text}</span>
+                    <span class="act-time">Recently</span>
+                </div>
+            </li>
+        `).join('');
+        }
+
+        fetch('http://localhost:8080/api/users')
+            .then(r => r.json())
+            .then(users => {
+                document.getElementById('statUsers').textContent = users.length;
+                users.forEach(u => {
+                    allActivity.push({
+                        timestamp: u.user_id, // proxy for created_at
+                        color: '#c9a96e',
+                        text: `<strong>User registered</strong> — ${u.name}`
+                    });
+                });
+                renderActivity();
+            })
+            .catch(() => document.getElementById('statUsers').textContent = '—');
+
+        fetch('http://localhost:8080/vendors')
+            .then(r => r.json())
+            .then(vendors => {
+                document.getElementById('statVendors').textContent = vendors.length;
+                vendors.forEach(v => {
+                    allActivity.push({
+                        timestamp: v.id || 0, // proxy for created_at
+                        color: '#7a9e87',
+                        text: `<strong>Vendor added</strong> — ${v.vendorName}`
+                    });
+                });
+                renderActivity();
+            })
+            .catch(() => document.getElementById('statVendors').textContent = '—');
+
+        fetch('http://localhost:8080/api/bookings')
+            .then(r => r.json())
+            .then(bookings => {
+                const active = bookings.filter(b => b.status === 'approved' || b.status === 'pending');
+                document.getElementById('statBookings').textContent = active.length;
+                bookings.forEach(b => {
+                    allActivity.push({
+                        timestamp: b.id || 0, // proxy for created_at
+                        color: '#c4756a',
+                        text: `<strong>New booking</strong> by ${b.customer}`
+                    });
+                });
+                renderActivity();
+            })
+            .catch(() => document.getElementById('statBookings').textContent = '—');
+
+        /* ── Active nav highlight ───────────────────── */
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function () {
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+
+</body>
+
+</html>
