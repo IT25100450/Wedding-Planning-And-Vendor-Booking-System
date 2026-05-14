@@ -1,0 +1,185 @@
+/* ============================================================
+   ETERNAL BLISS — Admin Reviews Moderation
+   ratings_admin.css  (extends adminpanel.css)
+   ============================================================ */
+
+/* ── Search box in topbar ────────────────────────────────────── */
+.ra-search-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--white);
+    border: 1px solid var(--panel-border);
+    border-radius: 24px;
+    padding: 8px 16px;
+    box-shadow: var(--shadow-sm);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.ra-search-box:focus-within {
+    border-color: rgba(201,169,110,0.55);
+    box-shadow: 0 0 0 3px rgba(201,169,110,0.10);
+}
+.ra-search-box svg { width: 15px; height: 15px; color: var(--muted); flex-shrink: 0; }
+.ra-search-box input {
+    font-family: var(--font-body);
+    font-size: 0.76rem;
+    font-weight: 300;
+    color: var(--charcoal);
+    width: 200px;
+    border: none;
+    outline: none;
+    background: none;
+}
+.ra-search-box input::placeholder { color: var(--muted); }
+
+/* ── Stats strip ─────────────────────────────────────────────── */
+.rv-stats {
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,0.80);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-sm);
+    padding: 18px 32px;
+    margin-bottom: 22px;
+    animation: fade-up 0.5s ease 0.08s both;
+}
+.rv-stat { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.rv-stat-val {
+    font-family: var(--font-display);
+    font-size: 2.0rem;
+    font-weight: 600;
+    color: var(--deep-rose);
+    line-height: 1;
+}
+.rv-stat-label { font-size: 0.62rem; font-weight: 300; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; }
+.rv-stat-stars { font-size: 0.82rem; color: #e8a816; letter-spacing: 1px; margin-top: 1px; }
+.rv-stat-div { width: 1px; height: 36px; background: var(--panel-border); margin: 0 8px; }
+
+/* ── Panel ───────────────────────────────────────────────────── */
+.ra-panel { animation: fade-up 0.55s ease 0.16s both; }
+
+/* ── Filter buttons ──────────────────────────────────────────── */
+.rv-filters { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.rv-filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--panel-border);
+    background: transparent;
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 400;
+    color: var(--muted);
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.rv-filter-btn svg { width: 11px; height: 11px; }
+.rv-filter-btn:hover { background: var(--blush); color: var(--charcoal); }
+.rv-filter-btn.active {
+    background: linear-gradient(135deg, var(--rose), var(--deep-rose));
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 3px 10px rgba(139,58,58,0.22);
+}
+.ra-flag-filter { color: #b8860b; border-color: rgba(184,134,11,0.25); background: rgba(232,168,22,0.06); }
+.ra-flag-filter.active { background: linear-gradient(135deg, #c9a96e, #8b6914); }
+
+
+
+/* ── Review Cards ────────────────────────────────────────────── */
+.rv-list { display: flex; flex-direction: column; gap: 10px; }
+
+.rv-card {
+    background: var(--white);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.22s, transform 0.22s;
+    animation: fade-up 0.4s ease both;
+}
+.rv-card:hover { box-shadow: 0 8px 28px rgba(139,58,58,0.09); transform: translateY(-1px); }
+.ra-card-flagged { border-color: rgba(184,134,11,0.35); background: rgba(232,168,22,0.03); }
+
+.rv-card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; }
+.rv-card-meta { display: flex; align-items: center; gap: 10px; }
+.rv-avatar {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blush), var(--rose));
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 1.0rem;
+    font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+}
+.rv-card-name { font-size: 0.82rem; font-weight: 500; color: var(--charcoal); }
+.rv-card-service { font-weight: 300; color: var(--muted); font-size: 0.72rem; }
+.rv-card-date { font-size: 0.67rem; font-weight: 300; color: var(--muted); margin-top: 1px; }
+.rv-card-stars { font-size: 0.88rem; color: #e8a816; letter-spacing: 1px; }
+.rv-card-text { font-size: 0.80rem; font-weight: 300; color: var(--charcoal); line-height: 1.65; }
+
+.rv-card-actions { display: flex; align-items: center; gap: 5px; }
+
+/* Flag badge */
+.ra-flag-badge {
+    font-size: 0.58rem;
+    font-weight: 500;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: #b8860b;
+    background: rgba(232,168,22,0.12);
+    border: 1px solid rgba(232,168,22,0.28);
+    padding: 2px 8px;
+    border-radius: 20px;
+}
+
+/* Action icon buttons */
+.rv-card-icon-btn {
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    opacity: 0.35;
+    transition: opacity 0.2s, background 0.2s, transform 0.2s;
+    background: transparent;
+}
+.rv-card-icon-btn svg { width: 13px; height: 13px; }
+.rv-card:hover .rv-card-icon-btn { opacity: 1; }
+.rv-card-icon-btn.ra-unflag { opacity: 1; }
+
+.rv-card-icon-btn.delete {
+    color: var(--rose);
+    border-color: rgba(196,117,106,0.22);
+    background: rgba(196,117,106,0.07);
+}
+.rv-card-icon-btn.delete:hover { background: rgba(196,117,106,0.18); transform: scale(1.08); }
+
+.rv-card-icon-btn.ra-flag {
+    color: #b8860b;
+    border-color: rgba(184,134,11,0.20);
+    background: rgba(232,168,22,0.06);
+}
+.rv-card-icon-btn.ra-flag:hover { background: rgba(232,168,22,0.14); transform: scale(1.08); }
+
+.rv-card-icon-btn.ra-unflag {
+    color: #b8860b;
+    border-color: rgba(184,134,11,0.35);
+    background: rgba(232,168,22,0.14);
+    opacity: 1;
+}
+.rv-card-icon-btn.ra-unflag:hover { background: rgba(232,168,22,0.22); transform: scale(1.08); }
+
+/* ── Empty state ─────────────────────────────────────────────── */
+.rv-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px 24px; gap: 10px; color: var(--muted); }
+.rv-empty-icon { font-size: 2rem; color: var(--gold); opacity: 0.5; }
+.rv-empty p { font-family: var(--font-display); font-style: italic; font-size: 1.0rem; font-weight: 300; }
+
+@keyframes fade-up { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
